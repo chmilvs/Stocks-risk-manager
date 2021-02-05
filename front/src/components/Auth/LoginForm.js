@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom'
 import './Auth.css'
 
@@ -7,7 +6,7 @@ function LoginForm({ setState }) {
     <div className="auth">
       <form>
         <div className="col-6 col-12-xsmall">
-          <input type="text" name="username" id="name" placeholder="Имя пользователя" />
+          <input type="text" name="username" id="name" placeholder="Логин" />
         </div>
         <div className="col-6 col-12-xsmall">
           <input
