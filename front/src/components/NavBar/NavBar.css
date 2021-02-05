@@ -1,0 +1,108 @@
+#page-wrapper {
+  padding-top: 3.5em;
+}
+
+#header {
+  background: rgba(39, 40, 51, 0.965);
+  box-shadow: 0 0 0.25em 0 rgba(0, 0, 0, 0.25);
+  cursor: default;
+  height: 3.5em;
+  left: 0;
+  line-height: 3.5em;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+  #header h1 {
+    height: inherit;
+    left: 1.25em;
+    line-height: inherit;
+    margin: 0;
+    position: absolute;
+    top: 0;
+  }
+
+  #header nav {
+    position: absolute;
+    right: 1em;
+    top: 0;
+  }
+
+    #header nav ul {
+      margin: 0;
+    }
+
+      #header nav ul li {
+        display: inline-block;
+        margin-left: 1em;
+      }
+
+        #header nav ul li a, #header nav ul li span {
+          border: 0;
+          color: inherit;
+          display: inline-block;
+          height: inherit;
+          line-height: inherit;
+          outline: 0;
+        }
+
+          #header nav ul li a.button, #header nav ul li span.button {
+            height: 2em;
+            line-height: 2em;
+            padding: 0 1.25em;
+          }
+
+          #header nav ul li a:not(.button):before, #header nav ul li span:not(.button):before {
+            margin-right: 0.5em;
+          }
+
+        #header nav ul li.active > a, #header nav ul li.active > span {
+          color: #e44c65;
+        }
+
+        #header nav ul li > ul {
+          display: none;
+        }
+
+body.landing #page-wrapper {
+  padding-top: 0;
+}
+
+body.landing #header {
+  background: transparent;
+  box-shadow: none;
+  position: absolute;
+}
+
+.button {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  -moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  -ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  background-color: transparent;
+  border-radius: 4px;
+  border: 0;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+  color: #ffffff !important;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 300;
+  height: 3em;
+  line-height: 3em;
+  padding: 0 2.25em;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.button.primary {
+  background-color: #e44c65;
+  box-shadow: none;
+  color: #ffffff !important;
+}
