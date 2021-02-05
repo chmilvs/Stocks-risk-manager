@@ -1,7 +1,7 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import NavBar from './components/NavBar/NavBar'
 import Banner from './components/Banner/Banner'
-import AuthForm from './components/AuthForm/AuthForm' 
+import Auth from './components/AuthForm/Auth'
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
       </Route>
 
       <Route path='/auth'>
-      <AuthForm/>
+      <Auth/>
       </Route>
  
       </Switch>
