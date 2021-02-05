@@ -7,7 +7,7 @@ function NavBar() {
       <h1 id="logo"><Link to="/">Investhood Helpier</Link></h1>
       <nav id="nav">
         <ul>
-          <li><Link to="/auth" className="button primary">Log In</Link></li>
+          <li><Link to="/auth" className="button primary">Войти</Link></li>
         </ul>
       </nav>
   </header>
