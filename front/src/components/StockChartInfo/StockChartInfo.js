@@ -1,29 +1,66 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import { AreaChart, XAxis, YAxis, CartesianGrid, Tooltip, Area } from 'recharts';
 
 function StockChartInfo(props) {
-  
-  const [info, setInfo] = useState(null)
+  const [info = 'Такой акции не найдено', setInfo] = useState(null)
+  const [ticker, setTicker] = useState('')
+
+  const inputHandler = (event) => {
+    setTicker(event.target.value.trim())
+  }
   const getInfo = (event) => {
     event.preventDefault()
-    
-    const { tickerName } = event.target
 
-    fetch(`https://query1.finance.yahoo.com/v10/finance/quoteSummary/${tickerName.value}?modules=price`)
-    .then(res => res.json())
-    .then(data => setInfo(data))
+    // const URL = `https://finnhub.io/api/v1/quote?symbol=${ticker.toUpperCase()}&token=c0ehldv48v6q2norbkk0`
+    // const URL = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&interval=5min&apikey=VHOVYLDE88BS9RRT&symbol=${ticker.toUpperCase()}`
+    const URL = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${ticker.toUpperCase()}&outputsize=comapct&apikey=VHOVYLDE88BS9RRT`
+
+    fetch(URL)
+      .then(res => res.json())
+      .then(data => { setInfo(data) })
+
   }
-  console.log(info);
+  let data = [];
+  let data2 = []
+
+
+  // for(let key in info["Time Series (Daily)"]) {
+  //   data2.push(key)
+  // }
+
+  info && Object.values(info["Time Series (Daily)"]).map((el, index) => {
+   data.push({ цена: Number(el["4. close"]), дата: data2[index] })
+  })
+
+  console.log(data2)
+  console.log(data);
 
   return (
-    <div>
-      <form onSubmit={ getInfo }>
-        <input type="text" name="tickerName"></input>
-        <button type="submit">Search</button>
-      </form>
+    <>
       <div>
-        {info}
+        <form onSubmit={ getInfo }>
+          <input type="text" onChange={ inputHandler }></input>
+          <button className="button primary" type="submit">Search</button>
+        </form>
+
       </div>
-    </div>
+      <AreaChart width={500} height={200} data={data.reverse()}
+        margin={{ top: 20, right: 20, left: 20, bottom: 20 }}>
+        <defs>
+          <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="2%" stopColor="#8884d8" stopOpacity={0.8} />
+            <stop offset="90%" stopColor="#8884d8" stopOpacity={0} />
+          </linearGradient>
+        </defs>
+        
+        <YAxis />
+        {/* <CartesianGrid strokeDasharray="3 3" /> */}
+        <Tooltip />
+        <Area type="monotone" dataKey="цена" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
+        <Area type="monotone" dataKey="дата" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
+
+      </AreaChart>
+    </>
   );
 }
 
