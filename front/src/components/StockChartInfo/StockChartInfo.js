@@ -30,7 +30,9 @@ function StockChartInfo(props) {
   // }
 
   info && Object.values(info["Time Series (Daily)"]).map((el, index) => {
-    data.push({ "цена": Number(el["4. close"]), "дата": data2[index] })
+    return (
+        data.push({ "цена": Number(el["4. close"]), "дата": data2[index] })
+    )
   })
 
 

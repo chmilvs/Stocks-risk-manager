@@ -4,6 +4,7 @@ import Banner from './components/Banner/Banner'
 import Auth from './components/Auth/Auth'
 import RiskPage from "./components/RiskPage/RiskPage";
 import Dashboard from "./components/Dashboard/Dashboard";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -28,7 +29,7 @@ function App() {
           </Route>
 
       </Switch>
-
+      <Footer/>
     </BrowserRouter>
   );
 }
