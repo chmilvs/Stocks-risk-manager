@@ -9,7 +9,7 @@ function NavBar() {
         <ul>
             <li><Link to="/riskpage" className="button primary">Riskpage</Link></li>
             <li><Link to="/dashboard" className="button primary">Dashboard</Link></li>
-            <li><Link to="/auth" className="button primary">Log In</Link></li>
+            <li><Link to="/auth" className="button primary">Войти</Link></li>
         </ul>
       </nav>
   </header>
