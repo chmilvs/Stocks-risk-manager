@@ -37,14 +37,14 @@ function PieDiagram() {
 
   return (
     <>
-      <PieChart width={400} height={400}>
+      <PieChart width={400} height={350}>
         <Pie
           data={data}
           cx={200}
-          cy={200}
+          cy={150}
           labelLine={false}
           label={renderCustomizedLabel}
-          outerRadius={80}
+          outerRadius={100}
           fill="#8884d8"
           dataKey="value"
         >
