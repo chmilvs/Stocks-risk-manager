@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { AreaChart, XAxis, YAxis, CartesianGrid, Tooltip, Area } from 'recharts';
 
 function StockChartInfo(props) {
-  const [info = 'Такой акции не найдено', setInfo] = useState(null)
+  const [info, setInfo] = useState(null)
   const [ticker, setTicker] = useState('')
 
   const inputHandler = (event) => {
@@ -23,14 +23,18 @@ function StockChartInfo(props) {
   let data = [];
   let data2 = []
 
-
-  // for(let key in info["Time Series (Daily)"]) {
-  //   data2.push(key)
+  // if (info) {
+  //   for (let key in info["Time Series (Daily)"]) {
+  //     data2.push(key)
+  //   }
   // }
 
   info && Object.values(info["Time Series (Daily)"]).map((el, index) => {
-   data.push({ цена: Number(el["4. close"]), дата: data2[index] })
+    data.push({ "цена": Number(el["4. close"]), "дата": data2[index] })
   })
+
+
+
 
   console.log(data2)
   console.log(data);
@@ -38,13 +42,13 @@ function StockChartInfo(props) {
   return (
     <>
       <div>
-        <form onSubmit={ getInfo }>
-          <input type="text" onChange={ inputHandler }></input>
+        <form onSubmit={getInfo}>
+          <input type="text" onChange={inputHandler}></input>
           <button className="button primary" type="submit">Search</button>
         </form>
 
       </div>
-      <AreaChart width={500} height={200} data={data.reverse()}
+      {data && <AreaChart width={500} height={400} data={data.reverse().slice(0, 50)}
         margin={{ top: 20, right: 20, left: 20, bottom: 20 }}>
         <defs>
           <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
@@ -52,14 +56,14 @@ function StockChartInfo(props) {
             <stop offset="90%" stopColor="#8884d8" stopOpacity={0} />
           </linearGradient>
         </defs>
-        
+
         <YAxis />
         {/* <CartesianGrid strokeDasharray="3 3" /> */}
-        <Tooltip />
-        <Area type="monotone" dataKey="цена" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
+        <Tooltip viewBox={{ x: 0, y: 0, width: 1000, height: 500 }}/>
         <Area type="monotone" dataKey="дата" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
+        <Area type="monotone" dataKey="цена" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
 
-      </AreaChart>
+      </AreaChart>}
     </>
   );
 }
