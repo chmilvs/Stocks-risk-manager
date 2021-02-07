@@ -6,13 +6,12 @@ function LoginForm({ setState }) {
     <div className="auth">
       <form>
         <div className="col-6 col-12-xsmall">
-          <input type="text" name="username" id="name" placeholder="Логин" />
+          <input type="text" name="username" placeholder="Логин" />
         </div>
         <div className="col-6 col-12-xsmall">
           <input
             type="password"
             name="password"
-            id="email"
             placeholder="Пароль"
           />
         </div>
