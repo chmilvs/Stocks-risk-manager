@@ -1,7 +1,7 @@
 import React from 'react';
 import "./RiskForm.css";
 import { Link } from "react-router-dom";
-import StockChartInfo from '../../stockChartInfo/StockChartInfo';
+import StockChartInfo from "../../StockChartInfo/StockChartInfo";
 
 function RiskForm() {
   return (
@@ -34,7 +34,7 @@ function RiskForm() {
         </form>
       </div>
       <div >
-        <StockChartInfo />
+        <StockChartInfo/>
       </div>
     </div>
   );
