@@ -49,3 +49,4 @@ router
         }
     })
 
+module.exports = router

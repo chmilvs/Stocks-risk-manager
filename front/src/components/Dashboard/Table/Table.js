@@ -70,7 +70,7 @@ function Table() {
       </tbody>
       <tfoot>
         <tr>
-          <td colspan="7"></td>
+          <td colSpan="7"></td>
           <td>100.00</td>
         </tr>
       </tfoot>
