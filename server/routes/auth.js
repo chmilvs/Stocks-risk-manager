@@ -1,6 +1,5 @@
 const express = require('express')
 const jwt = require('jsonwebtoken')
-const mongoose = require('mongoose')
 const router = express.Router()
 const bcrypt = require('bcrypt')
 const User = require('../models/user')
@@ -48,5 +47,23 @@ router
             res.json({success: false, message: err.message})
         }
     })
+
+.post('/',async (req,res)=>{
+    const {token} = req.body
+    try{
+    await jwt.verify(token,privateKey, async (err,decoded)=>{
+        if(err){
+            res.json({success:false,message:'Auth token expired'})
+        }
+        else{
+            const user = await User.findById(token._id)
+            res.json({success:true,user})
+        }
+        }
+    )}
+    catch (err){
+        res.json({success:false,message:err.message})
+    }
+})
 
 module.exports = router
