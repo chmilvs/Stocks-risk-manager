@@ -30,10 +30,6 @@ function StockChartInfo(props) {
   info && Object.values(info["Time Series (Daily)"]).map((el, index) => {
     return data.push({ "цена": Number(el["4. close"]), "дата": data2[index] })
   })
-  
-
-  console.log(data2)
-  console.log(data);  
 
   return (
     <>
@@ -53,11 +49,10 @@ function StockChartInfo(props) {
               <stop offset="70%" stopColor="#8884d8" stopOpacity={0} />
             </linearGradient>
           </defs>
-          {/* <XAxis dataKey="дата"/> */}
+          <XAxis dataKey="дата" hide={ true }/>
           <YAxis /> 
           <Brush dataKey="дата" height={30} stroke="#8884d8"/>
           <Area type="monotone" dataKey="цена" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
-          {/* <Tooltip formatter={(label) => label + " %"}/> */}
           <Tooltip />
         </AreaChart>}
       </div>
