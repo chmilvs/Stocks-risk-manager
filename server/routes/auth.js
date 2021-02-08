@@ -26,7 +26,7 @@ router
             const token = await jwt.sign({
                 _id: user._id,
             }, privateKey, {expiresIn: 60 * 360})
-            res.json({success: true, token})
+            res.json({success: true, token,user})
         } catch (err) {
             res.json({success: false, message: err.message.toString()})
         }
@@ -40,7 +40,7 @@ router
                 const token = await jwt.sign({
                     _id: user._id,
                 }, privateKey, {expiresIn: 60 * 360})
-                res.json({success: true, token})
+                res.json({success: true, token,user})
             } else if (user) res.json({success: false, message: 'Wrong password'})
             else res.json({success: false, message: 'No such user'})
         } catch (err) {
