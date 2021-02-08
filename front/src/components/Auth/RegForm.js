@@ -1,14 +1,19 @@
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { signUpFetchAC } from '../../redux/actionCreators/authAC'
+import { Redirect } from 'react-router-dom'
 import './Auth.css'
 
 function RegForm({ setState }) {
   const dispatch = useDispatch()
-
+  const isLogged = useSelector(state => state.auth.isLogged)
   const signUp = (event) => {
     event.preventDefault()
     const { username: {value: username}, password: {value: password}, phone: {value: phone}, email: {value: email} } = event.target
     dispatch(signUpFetchAC({ username, password, phone, email }))
+    
+  }
+  if(isLogged){
+    return <Redirect to='/dashboard'/>
   }
   return (
     <div className="auth">

@@ -1,4 +1,4 @@
-import { WRITE_ERROR } from "../types"
+import { CLEAR_ERROR, WRITE_ERROR } from "../types"
 
 const defaultState = {
   isError: false,
@@ -13,6 +13,12 @@ const errorMessageReducer = (state = defaultState, action) => {
         isError: true,
         text: action.payload
       }
+      case CLEAR_ERROR:
+        return {
+          ...state,
+          isError: false,
+          text: ''
+        }
     default:
       return state
   }

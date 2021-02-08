@@ -1,6 +1,7 @@
 import './Banner.css'
 
 function Banner() {
+
   return (
     <>
     <section id="banner">

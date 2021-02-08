@@ -1,4 +1,4 @@
-import { SAVE_NEWUSER } from "../types"
+import { SAVE_NEWUSER, USER_LOGOUT } from "../types"
 
 const defaultState = {
   currentUser: {},
@@ -13,6 +13,12 @@ const authReducer = (state = defaultState, action) => {
       isLogged: true,
       currentUser: action.payload
     }
+    case USER_LOGOUT:
+      return {
+        ...state,
+        isLogged: false,
+        currentUser: {}
+      }
     default:
       return state
   }
