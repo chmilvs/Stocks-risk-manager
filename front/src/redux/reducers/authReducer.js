@@ -1,7 +1,8 @@
 import { SAVE_NEWUSER } from "../types"
 
 const defaultState = {
-  currentUser: {}
+  currentUser: {},
+  isLogged: false
 }
 
 const authReducer = (state = defaultState, action) => {
@@ -9,6 +10,7 @@ const authReducer = (state = defaultState, action) => {
     case SAVE_NEWUSER: 
     return {
       ...state,
+      isLogged: true,
       currentUser: action.payload
     }
     default:
