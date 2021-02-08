@@ -1,4 +1,4 @@
-module.exports = function(app) {
+module.exports = function (app) {
 
     app.use((req, res, next) => {
         const error = new Error('Not found');
