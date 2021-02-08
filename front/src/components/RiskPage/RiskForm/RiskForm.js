@@ -1,15 +1,10 @@
-import React,{useState} from 'react';
+import React, {useState} from 'react';
 import "./RiskForm.css";
 import StockChartInfo from "../../StockChartInfo/StockChartInfo";
-import {useEffect} from 'react'
-import SelectSearch from "react-select-search";
-import {fuzzySearch} from "react-select-search";
-import {getStocks} from "../../../redux/utils/getAllStocks";
-import {GET_ALL_STOCKS} from "../../../redux/utils/utils";
 import SearchList from "../../searchList/searchList";
 
 function RiskForm() {
-    const[stockName,setStockName] = useState(null)
+    const [stockName, setStockName] = useState(null)
     console.log(stockName)
     return (
         <div style={{display: "flex", justifyContent: "center"}}>
@@ -21,8 +16,8 @@ function RiskForm() {
                     <div className="col-6 col-12-xsmall">
                         <input type="text" name="riskpersent" placeholder="Введите риск на акцию в %"/>
                     </div>
-                    <div className="col-6 col-12-xsmall" style={{color:'red'}}>
-                    <SearchList stockName={stockName} setStockName={setStockName}/>
+                    <div className="col-6 col-12-xsmall" style={{color: 'red'}}>
+                        <SearchList stockName={stockName} setStockName={setStockName}/>
                         {/*<input type="text" name="stockname" placeholder="Введите название акции"/>*/}
                     </div>
                     <div className="col-6 col-12-xsmall">

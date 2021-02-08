@@ -1,14 +1,14 @@
-import { CLEAR_ERROR, WRITE_ERROR } from "../types"
+import {CLEAR_ERROR, WRITE_ERROR} from "../types"
 
 export const errorsAC = (payload) => {
-  return {
-    type: WRITE_ERROR,
-    payload
-  }
+    return {
+        type: WRITE_ERROR,
+        payload
+    }
 }
 
 export const clearErrorAC = () => {
-  return {
-    type: CLEAR_ERROR
-  }
+    return {
+        type: CLEAR_ERROR
+    }
 }
