@@ -1,15 +1,18 @@
 import React from 'react';
 import SelectSearch, {fuzzySearch} from "react-select-search";
 import {GET_ALL_STOCKS} from "../../redux/utils/utils";
+import s from './searchList.module.css'
 
-function SearchList({ stockName, setStockName }) {
-  return (
-    <SelectSearch
-      value={stockName}
-      onChange={setStockName}
-      options={[]}
-      filterOptions={(options) => {
-        const filter = fuzzySearch(options);
+function SearchList({stockName, setStockName}) {
+
+    return (
+        <SelectSearch
+            className={s.select}
+            value={stockName}
+            onChange={setStockName}
+            options={[]}
+            filterOptions={(options) => {
+                const filter = fuzzySearch(options);
 
         return (q) => filter(q).slice(0, 5);
       }}
