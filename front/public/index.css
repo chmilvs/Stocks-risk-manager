@@ -2207,6 +2207,7 @@ body.is-touch .spotlight {
   }
 
     .wrapper.style2 input[type="text"]:focus,
+	.wrapper.style2 input[type="number"]:focus,
     .wrapper.style2 input[type="password"]:focus,
     .wrapper.style2 input[type="email"]:focus,
     .wrapper.style2 select:focus,
@@ -2370,6 +2371,7 @@ body.landing .dropotron.level-0 {
 }
 
 input[type="text"],
+input[type="number"],
 input[type="password"],
 input[type="email"],
 select,
@@ -2394,6 +2396,7 @@ textarea {
 }
 
   input[type="text"]:invalid,
+  input[type="number"],
   input[type="password"]:invalid,
   input[type="email"]:invalid,
   select:invalid,
@@ -2410,6 +2413,7 @@ textarea {
   }
 
 input[type="text"],
+input[type="number"],
 input[type="password"],
 input[type="email"],
 select {
