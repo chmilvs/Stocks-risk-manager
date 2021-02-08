@@ -1,9 +1,14 @@
-import React from 'react';
+import React,{useState} from 'react';
 import "./RiskForm.css";
-import {Link} from "react-router-dom";
 import StockChartInfo from "../../StockChartInfo/StockChartInfo";
+import companyNames from "./stockNames";
+import SelectSearch from "react-select-search";
+import {fuzzySearch} from "react-select-search";
 
 function RiskForm() {
+    console.log(companyNames)
+    const[companyName,setCompanyName] = useState(null)
+    console.log(companyName)
     return (
         <div style={{display: "flex", justifyContent: "center"}}>
             <div className="riskform">
@@ -14,8 +19,10 @@ function RiskForm() {
                     <div className="col-6 col-12-xsmall">
                         <input type="text" name="riskpersent" placeholder="Введите риск на акцию в %"/>
                     </div>
-                    <div className="col-6 col-12-xsmall">
-                        <input type="text" name="stockname" placeholder="Введите название акции"/>
+                    <div className="col-6 col-12-xsmall" style={{color:'red'}}>
+                         <SelectSearch  onChange={setCompanyName} options={companyNames} search filterOptions={fuzzySearch} name="tickerName"  placeholder="Choose your language"/>
+
+                        {/*<input type="text" name="stockname" placeholder="Введите название акции"/>*/}
                     </div>
                     <div className="col-6 col-12-xsmall">
                         <input type="number" name="lotstobuy" id="email" placeholder="Введите лот"/>
@@ -34,7 +41,7 @@ function RiskForm() {
                 </form>
             </div>
             <div>
-                <StockChartInfo/>
+                <StockChartInfo tickerName={companyName}/>
             </div>
         </div>
     );
