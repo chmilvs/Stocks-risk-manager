@@ -7,6 +7,7 @@ function SearchList({stockName, setStockName}) {
 
     return (
         <SelectSearch
+        
             className={s.select}
             value={stockName}
             onChange={setStockName}

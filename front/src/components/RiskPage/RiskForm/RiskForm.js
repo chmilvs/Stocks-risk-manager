@@ -24,7 +24,7 @@ function RiskForm() {
               placeholder="Введите риск на акцию в %"
             />
           </div>
-          <div className="col-6 col-12-xsmall" style={{ color: "red" }}>
+          <div className="col-6 col-12-xsmall" >
             <SearchList stockName={stockName} setStockName={setStockName} />
             {/*<input type="text" name="stockname" placeholder="Введите название акции"/>*/}
           </div>
