@@ -1,14 +1,16 @@
 import React,{useState} from 'react';
 import "./RiskForm.css";
 import StockChartInfo from "../../StockChartInfo/StockChartInfo";
-import companyNames from "./stockNames";
+import {useEffect} from 'react'
 import SelectSearch from "react-select-search";
 import {fuzzySearch} from "react-select-search";
+import {getStocks} from "../../../redux/utils/getAllStocks";
+import {GET_ALL_STOCKS} from "../../../redux/utils/utils";
+import SearchList from "../../searchList/searchList";
 
 function RiskForm() {
-    console.log(companyNames)
-    const[companyName,setCompanyName] = useState(null)
-    console.log(companyName)
+    const[stockName,setStockName] = useState(null)
+    console.log(stockName)
     return (
         <div style={{display: "flex", justifyContent: "center"}}>
             <div className="riskform">
@@ -20,8 +22,7 @@ function RiskForm() {
                         <input type="text" name="riskpersent" placeholder="Введите риск на акцию в %"/>
                     </div>
                     <div className="col-6 col-12-xsmall" style={{color:'red'}}>
-                         <SelectSearch  onChange={setCompanyName} options={companyNames} search filterOptions={fuzzySearch} name="tickerName"  placeholder="Choose your language"/>
-
+                    <SearchList stockName={stockName} setStockName={setStockName}/>
                         {/*<input type="text" name="stockname" placeholder="Введите название акции"/>*/}
                     </div>
                     <div className="col-6 col-12-xsmall">
@@ -41,7 +42,7 @@ function RiskForm() {
                 </form>
             </div>
             <div>
-                <StockChartInfo tickerName={companyName}/>
+                <StockChartInfo tickerName={stockName}/>
             </div>
         </div>
     );
