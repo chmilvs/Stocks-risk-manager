@@ -1,49 +1,26 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import "./RiskForm.css";
 import StockChartInfoFinal from "../../StockChartInfo/StockChartInfoFinal";
 import SearchList from "../../searchList/searchList";
-import {getMaxLots} from "../../../fetchFunctions/fetchFunction";
 
 function RiskForm() {
   const [stockName, setStockName] = useState(null);
   const [failureMssg, setFailureMssg] = useState('')
-  const [deposit, setDeposit] = useState(null)
-  const [riskLevel, setRiskLevel] = useState(null)
-  const [finalResultOFCalculation, setFinalResultOFCalculation] = useState(0)
+  const [sumToSpend, setSumToSpend] = useState(0)
 
-  const handleInput = (e) => {
-    setDeposit(e.target.value)
+const handleSubmit = (e) =>{
+    e.preventDefault()
+  const {budget,riskPercent} = e.target
+  let sum = parseInt(budget.value)/parseInt(riskPercent.value)
+  setSumToSpend(sum)
+}
 
-  }
-  const handleInput2 = (e) => {
-    setRiskLevel(e.target.value)
-    setFinalResultOFCalculation(getMaxLots(deposit, riskLevel, actualPrice))
-  }
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
       <div className="riskform">
-        <form>
-          <div className="col-6 col-12-xsmall">
-            <input
-              type="text"
-              name="budget"
-              placeholder="Введите размер депозита"
-              value={deposit}
-              onChange={(e) => {handleInput(e)}}
-            />
-          </div>
-          <div className="col-6 col-12-xsmall">
-            <input
-              type="text"
-              name="riskpersent"
-              placeholder="Введите риск на акцию в %"
-              value={riskLevel}
-              onChange={(e) => {handleInput2(e)}}
-            />
-          </div>
+        <form autoComplete={"off"} onSubmit={handleSubmit}>
           <div className="col-6 col-12-xsmall" >
             <SearchList stockName={stockName} setStockName={setStockName} />
-            {/*<input type="text" name="stockname" placeholder="Введите название акции"/>*/}
           </div>
           {failureMssg && <div>
             {failureMssg}}
@@ -51,16 +28,26 @@ function RiskForm() {
           <div className="col-6 col-12-xsmall">
             <input
               type="number"
-              name="lotstobuy"
-              id="email"
-              placeholder="Введите лот"
-              value={1}
+              name="budget"
+              placeholder="Введите размер депозита"
             />
+          </div>
+          <div className="col-6 col-12-xsmall">
+            <input
+              type="number"
+              name="riskPercent"
+              placeholder="Введите риск на акцию в %"
+            />
+          </div>
+          <div className="col-6 col-12-xsmall">
+            <div className="col-6 col-12-xsmall">
+            <input type={'submit'} value={'Рассчитать количество акций к покупке'}/>
+            </div>
           </div>
         </form>
       </div>
       <div>
-        <StockChartInfoFinal tickerName={stockName} setFailureMssg={setFailureMssg} riskLevel={riskLevel} deposit={deposit}/>
+        <StockChartInfoFinal tickerName={stockName} sumToSpend={sumToSpend} setFailureMssg={setFailureMssg} />
       </div>
     </div>
   );
