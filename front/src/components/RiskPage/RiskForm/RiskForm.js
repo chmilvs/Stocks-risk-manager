@@ -11,7 +11,7 @@ function RiskForm() {
 const handleSubmit = (e) =>{
     e.preventDefault()
   const {budget,riskPercent} = e.target
-  let sum = parseInt(budget.value)/parseInt(riskPercent.value)
+  let sum = parseInt(budget.value)/100*parseInt(riskPercent.value)
   setSumToSpend(sum)
 }
 
