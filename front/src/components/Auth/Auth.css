@@ -1,24 +1,24 @@
 form {
-  margin: 200px 0 0 0;
-  display: flex;
-  flex-direction: column;
-  width: 400px;
+    margin: 200px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    width: 400px;
 }
 
 
 .auth {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 
 .col-6.col-12-xsmall {
-  margin-top: 10px;
+    margin-top: 10px;
 }
 
 .button.primary.small {
-  margin-top: 10px;
+    margin-top: 10px;
 }
 
-.link{
-  width: 220px;
+.link {
+    width: 220px;
 }
