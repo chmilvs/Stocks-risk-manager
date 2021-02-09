@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import {AreaChart, XAxis, YAxis, Brush, Tooltip, Area} from 'recharts';
+import {Area, AreaChart, Brush, Tooltip, XAxis, YAxis} from 'recharts';
 
-function StockChartInfo(props) {
+function StockChartInfo({stockName}) {
     const [info, setInfo] = useState(null)
     const [ticker, setTicker] = useState(null)
     const [timePeriod, setTimePeriod] = useState('')
@@ -22,7 +22,7 @@ function StockChartInfo(props) {
         fetch(URL)
             .then(res => res.json())
             .then(data => {
-                if(!data["Error Message"]) {
+                if (!data["Error Message"]) {
                     setFailureMssg('')
                     setInfo(data)
                     setBtnShow(true)
@@ -45,24 +45,41 @@ function StockChartInfo(props) {
         fetch(URL2)
             .then(res => res.json())
             .then(data => {
-                if(!data["Error Message"]) {
+                if (!data["Error Message"]) {
                     setFailureMssg('')
                     setInfo(data)
                     setBtnShow(true)
                     setLoading(false)
                 } else setFailureMssg('Тикер акции введен неправильно')
             })
-        // .catch(() => setFailureMssg('Тикер акции введен неправильно'))
+
     }
 
-        let data = [];
-        let data2 = []
+    let data = [];
+    let data2 = []
 
-        if (info) {
-            for (let key in info[timePeriod]) {
-                data2.push(key)
-            }
+    if (info) {
+        for (let key in info[timePeriod]) {
+            data2.push(key)
         }
+    }
+
+    !loading && info && Object.values(info[timePeriod]).map((el, index) => {
+        return data.push({"цена": Number(el["4. close"]), "дата": data2[index]})
+    })
+    // console.log(data)
+    // console.log(data2)
+    return (
+        <>
+            <div style={{marginTop: "210px"}}>
+                <div style={{marginLeft: "160px"}}>
+                    <form onSubmit={getInfo}>
+                        <button style={{marginBottom: "10px", height: "3em", fontSize: "15pt"}}
+                                className="button primary" type="submit">Поиск по тикеру
+                        </button>
+                        <input name="inquiry" type="text" onChange={inputHandler}></input>
+
+                        {failureMssg}
 
         !loading && info && Object.values(info[timePeriod]).map((el, index) => {
             return data.push({"цена": Number(el["4. close"]), "дата": data2[index].replace(/(\d+)-(\d+)-(\d+)/gi, '$3.$2.$1')})
@@ -112,8 +129,24 @@ function StockChartInfo(props) {
                         <Tooltip formatter={(label) => label + " USD"}/>
                     </AreaChart>}
                 </div>
-            </>
-        );
-    }
+                {data && <AreaChart width={710} height={370} data={data.reverse().slice(-100)}
+                                    margin={{top: 20, right: 150, left: 100, bottom: 20}}>
+                    <defs>
+                        <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="2%" stopColor="#8884d8" stopOpacity={0.8}/>
+                            <stop offset="70%" stopColor="#8884d8" stopOpacity={0}/>
+                        </linearGradient>
+                    </defs>
+                    <XAxis dataKey="дата" hide={true}/>
+                    <YAxis/>
+                    <Brush dataKey="дата" height={30} stroke="#8884d8"/>
+                    <Area type="monotone" dataKey="цена" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)"/>
 
-    export default StockChartInfo;
+                    <Tooltip/>
+                </AreaChart>}
+            </div>
+        </>
+    );
+}
+
+export default StockChartInfo;
