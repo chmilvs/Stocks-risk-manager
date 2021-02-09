@@ -1,6 +1,7 @@
 .riskform {
     display: flex;
     justify-content: center;
+    height: 890px;
 }
 
 input::-webkit-outer-spin-button,

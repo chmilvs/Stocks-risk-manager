@@ -53,7 +53,6 @@ router
 
     .post("/login",
         body('username').notEmpty(),
-        body('password').isLength({min:5}),
         async (req, res) => {
         const {username, password} = req.body;
         const errors = validationResult(req)
