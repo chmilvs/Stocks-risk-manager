@@ -23,9 +23,9 @@ function SearchList({stockName, setStockName}) {
             .then((response) => response.json())
             .then((jsonStocks) => {
               resolve(
-                jsonStocks.securities.data.map((el) => ({
-                  value: el[0],
-                  name: `${el[1]} ${el[6]}`,
+                jsonStocks.map((el) => ({
+                  value: el.symbol,
+                  name: el.name,
                 }))
               );
             })

@@ -5,7 +5,7 @@ import SearchList from "../../searchList/searchList";
 
 function RiskForm() {
   const [stockName, setStockName] = useState(null);
-  console.log(stockName);
+  console.log(stockName)
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
       <div className="riskform">
