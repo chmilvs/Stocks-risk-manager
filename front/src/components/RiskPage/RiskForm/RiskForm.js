@@ -2,14 +2,23 @@ import React, {useState} from 'react';
 import "./RiskForm.css";
 import StockChartInfoFinal from "../../StockChartInfo/StockChartInfoFinal";
 import SearchList from "../../searchList/searchList";
+import {getMaxLots} from "../../../fetchFunctions/fetchFunction";
 
 function RiskForm() {
   const [stockName, setStockName] = useState(null);
   const [failureMssg, setFailureMssg] = useState('')
   const [deposit, setDeposit] = useState(null)
   const [riskLevel, setRiskLevel] = useState(null)
-  console.log(deposit, riskLevel)
+  const [finalResultOFCalculation, setFinalResultOFCalculation] = useState(0)
 
+  const handleInput = (e) => {
+    setDeposit(e.target.value)
+
+  }
+  const handleInput2 = (e) => {
+    setRiskLevel(e.target.value)
+    setFinalResultOFCalculation(getMaxLots(deposit, riskLevel, actualPrice))
+  }
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
       <div className="riskform">
@@ -20,7 +29,7 @@ function RiskForm() {
               name="budget"
               placeholder="Введите размер депозита"
               value={deposit}
-              onChange={(event) => setDeposit(event.target.value)}
+              onChange={(e) => {handleInput(e)}}
             />
           </div>
           <div className="col-6 col-12-xsmall">
@@ -29,7 +38,7 @@ function RiskForm() {
               name="riskpersent"
               placeholder="Введите риск на акцию в %"
               value={riskLevel}
-              onChange={(event) => setRiskLevel(event.target.value)}
+              onChange={(e) => {handleInput2(e)}}
             />
           </div>
           <div className="col-6 col-12-xsmall" >
