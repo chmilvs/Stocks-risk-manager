@@ -3,7 +3,7 @@ import {Area, AreaChart, Brush, Tooltip, XAxis, YAxis} from 'recharts';
 
 function StockChartInfoFinal({tickerName}) {
     const [info, setInfo] = useState(null)
-    const [ticker, setTicker] = useState(tickerName)
+    // const [ticker, setTicker] = useState(tickerName)
     const [loading, setLoading] = useState(false)
     const [btnShow, setBtnShow] = useState(false)
     const [failureMssg, setFailureMssg] = useState('')
@@ -11,7 +11,6 @@ function StockChartInfoFinal({tickerName}) {
 
     useEffect(() => {
         if (tickerName !== null) {
-            let urlForActualPrice = `https://financialmodelingprep.com/api/v3/quote-short/${tickerName.toUpperCase()}?apikey=ec17cf42b20e533904666651c8f5af41`
             let URL = `https://financialmodelingprep.com/api/v3/historical-chart/15min/${tickerName.toUpperCase()}?apikey=ec17cf42b20e533904666651c8f5af41`
             setLoading(true)
             fetch(URL)
@@ -26,6 +25,7 @@ function StockChartInfoFinal({tickerName}) {
                 })
 
             setLoading(true)
+            let urlForActualPrice = `https://financialmodelingprep.com/api/v3/quote-short/${tickerName.toUpperCase()}?apikey=ec17cf42b20e533904666651c8f5af41`
             fetch(urlForActualPrice)
                 .then(res => res.json())
                 .then(data => {
