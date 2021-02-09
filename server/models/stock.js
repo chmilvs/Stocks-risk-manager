@@ -6,4 +6,4 @@ const stockSchema = new mongoose.Schema({
     tickerName:String,
 })
 
-module.exports = mongoose.model('User', stockSchema)
+module.exports = mongoose.model('Stock', stockSchema)
