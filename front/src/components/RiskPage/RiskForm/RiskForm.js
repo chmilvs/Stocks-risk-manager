@@ -36,25 +36,6 @@ function RiskForm() {
               placeholder="Введите лот"
             />
           </div>
-          <ul className="alt">
-            Вывод:
-            <li>Текущая стоимость акции</li>
-            <li>Количество акций в лоте</li>
-            <li>Стоимость лота</li>
-            <li>Максимальный лот при заданном уровне риска</li>
-          </ul>
-
-          <button
-            style={{
-              marginTop: "10px",
-              marginBottom: "100px",
-              height: "3em",
-              fontSize: "15pt",
-            }}
-            className="button primary"
-          >
-            Добавить
-          </button>
         </form>
       </div>
       <div>
