@@ -3,15 +3,15 @@ import {Area, AreaChart, Brush, Tooltip, XAxis, YAxis} from 'recharts';
 
 function StockChartInfo({stockName}) {
     const [info, setInfo] = useState(null)
-    const [ticker, setTicker] = useState(null)
+    const [ticker, setTicker] = useState(stockName)
     const [timePeriod, setTimePeriod] = useState('')
     const [loading, setLoading] = useState(false)
     const [btnShow, setBtnShow] = useState(false)
     const [failureMssg, setFailureMssg] = useState('')
 
-    const inputHandler = (event) => {
-        setTicker(event.target.value.trim())
-    }
+    // const inputHandler = (event) => {
+    //     setTicker(event.target.value.trim())
+    // }
 
     const getInfo = (event) => {
         event.preventDefault()
@@ -81,7 +81,7 @@ function StockChartInfo({stockName}) {
                                 className="button primary"
                                 type="submit">Поиск по тикеру
                         </button>
-                        <input name="inquiry" type="text" onChange={inputHandler} placeholder="Например: AAPL"></input>
+                        {/*<input name="inquiry" type="text" onChange={inputHandler} placeholder="Например: AAPL"></input>*/}
 
                         {failureMssg}
 

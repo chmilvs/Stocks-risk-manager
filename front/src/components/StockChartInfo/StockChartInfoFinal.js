@@ -1,33 +1,34 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Area, AreaChart, Brush, Tooltip, XAxis, YAxis} from 'recharts';
 
-function StockChartInfoFinal({stockName}) {
+function StockChartInfoFinal({tickerName}) {
     const [info, setInfo] = useState(null)
-    const [ticker, setTicker] = useState(null)
+    const [ticker, setTicker] = useState(tickerName)
     const [loading, setLoading] = useState(false)
     const [btnShow, setBtnShow] = useState(false)
     const [failureMssg, setFailureMssg] = useState('')
 
-    const inputHandler = (event) => {
-        setTicker(event.target.value.trim())
-    }
+    useEffect(()=> {
 
-    const getInfo = (event) => {
-        event.preventDefault()
-        let URL = `https://financialmodelingprep.com/api/v3/historical-chart/15min/${ticker.toUpperCase()}?apikey=3013358465f12be91f11f2c28a4cfd71`
 
-        setLoading(true)
-        fetch(URL)
-            .then(res => res.json())
-            .then(data => {
-                if (!data["Error Message"]) {
-                    setFailureMssg('')
-                    setInfo(data)
-                    setBtnShow(true)
-                    setLoading(false)
-                } else setFailureMssg('Тикер акции введен неправильно')
-            })
-    }
+            if(tickerName !== null) {
+                let URL = `https://financialmodelingprep.com/api/v3/historical-chart/15min/${tickerName.toUpperCase()}?apikey=3013358465f12be91f11f2c28a4cfd71`
+
+                setLoading(true)
+                fetch(URL)
+                    .then(res => res.json())
+                    .then(data => {
+                        if (!data["Error Message"]) {
+                            setFailureMssg('')
+                            setInfo(data)
+                            setBtnShow(true)
+                            setLoading(false)
+                        } else setFailureMssg('Тикер акции введен неправильно')
+                    })
+            }
+
+    }, [tickerName])
+
 
     const refreshData = (event) => {
         const {name} = event.target;
@@ -36,7 +37,7 @@ function StockChartInfoFinal({stockName}) {
         if (name === '1day') time = 'historical-price-full'
         else if (name === '4hour') time = 'historical-chart/4hour'
         else if (name === '15min') time = 'historical-chart/15min'
-        let URL2 = `https://financialmodelingprep.com/api/v3/${time}/${ticker.toUpperCase()}?apikey=3013358465f12be91f11f2c28a4cfd71`
+        let URL2 = `https://financialmodelingprep.com/api/v3/${time}/${tickerName.toUpperCase()}?apikey=3013358465f12be91f11f2c28a4cfd71`
         setLoading(true)
         fetch(URL2)
             .then(res => res.json())
@@ -56,16 +57,16 @@ function StockChartInfoFinal({stockName}) {
         <>
             <div style={{marginTop: "210px"}}>
                 <div style={{marginLeft: "160px"}}>
-                    <form onSubmit={getInfo}>
-                        <button style={{marginBottom: "10px", height: "3em", fontSize: "15pt"}}
-                                className="button primary"
-                                type="submit">Поиск по тикеру
-                        </button>
-                        <input name="inquiry" type="text" onChange={inputHandler} placeholder="Например: AAPL"></input>
+                    {/*<form onSubmit={getInfo}>*/}
+                    {/*    <button style={{marginBottom: "10px", height: "3em", fontSize: "15pt"}}*/}
+                    {/*            className="button primary"*/}
+                    {/*            type="submit">Поиск по тикеру*/}
+                    {/*    </button>*/}
+                    {/*    /!*<input name="inquiry" type="text" onChange={inputHandler} placeholder="Например: AAPL"></input>*!/*/}
 
-                        {failureMssg}
+                    {/*    {failureMssg}*/}
 
-                    </form>
+                    {/*</form>*/}
                     {btnShow && <div>
                         <button onClick={refreshData} type="button"
                                 name="15min" className="button primary">15 мин
