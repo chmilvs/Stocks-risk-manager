@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import "./RiskForm.css";
-import StockChartInfo from "../../StockChartInfo/StockChartInfo";
+import StockChartInfoFinal from "../../StockChartInfo/StockChartInfoFinal";
 import SearchList from "../../searchList/searchList";
 
 function RiskForm() {
@@ -58,7 +58,7 @@ function RiskForm() {
         </form>
       </div>
       <div>
-        <StockChartInfo tickerName={stockName} />
+        <StockChartInfoFinal tickerName={stockName} />
       </div>
     </div>
   );
