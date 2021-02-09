@@ -25,7 +25,7 @@ function SearchList({stockName, setStockName}) {
               resolve(
                 jsonStocks.map((el) => ({
                   value: el.symbol,
-                  name: el.name,
+                  name: `${el.name} ${el.symbol}`,
                 }))
               );
             })
@@ -33,7 +33,7 @@ function SearchList({stockName, setStockName}) {
         });
       }}
       search
-      placeholder="Введите название акции"
+      placeholder="Введите название акции или тикер"
     />
   );
 }
