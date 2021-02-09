@@ -68,6 +68,9 @@ export const getProfileAC = () => {
         }
     }
 };
+export const addStockAC = () => {
+
+}
 
 export const logOutAC = () => {
     localStorage.removeItem("jwt")

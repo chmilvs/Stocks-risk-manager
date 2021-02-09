@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {Area, AreaChart, Brush, Tooltip, XAxis, YAxis} from 'recharts';
-import {fetchTickers, refreshActualPrice, refreshData} from '../../fetchFunctions/fetchFunction'
+import {fetchTickers, refreshActualPrice, refreshData, getMaxLots} from '../../fetchFunctions/fetchFunction'
 
 function StockChartInfoFinal({tickerName, setFailureMssg, deposit, riskLevel}) {
     const [info, setInfo] = useState(null)
@@ -8,15 +8,12 @@ function StockChartInfoFinal({tickerName, setFailureMssg, deposit, riskLevel}) {
     const [btnShow, setBtnShow] = useState(false)
     const [actualPrice, setActualPrice] = useState(null)
 
+
     useEffect(() => {
         fetchTickers(tickerName, setLoading, setInfo, setBtnShow, setFailureMssg, setActualPrice)
-    }, [tickerName])
-
-    // const stockCalculate = (event) => {
-    //     event.preventDefault()
-    //
-    //
-    // }
+    }, [tickerName, finalResultOFCalculation])
+    console.log(deposit)
+    console.log(finalResultOFCalculation)
 
     return (
         <>
@@ -103,26 +100,31 @@ function StockChartInfoFinal({tickerName, setFailureMssg, deposit, riskLevel}) {
                     <ul className="alt">
                         Вывод:
                         <li>Текущая стоимость акции: {actualPrice} USD</li>
-                        <li>Максимальный лот при заданном уровне риска:</li>
+                        <li>Максимальный лот: {finalResultOFCalculation}</li>
                     </ul>
+                    <form>
+                        <input name="inquiry" type="text" placeholder="Или введите свои данные"></input>
+                        <button
+                            style={{
+                                marginTop: "10px",
+                                marginBottom: "100px",
+                                height: "3em",
+                                fontSize: "15pt",
+                            }}
+                            className="button primary"
+                        >
+                            Добавить
+                        </button>
 
-                    <button
-                        style={{
-                            marginTop: "10px",
-                            marginBottom: "100px",
-                            height: "3em",
-                            fontSize: "15pt",
-                        }}
-                        className="button primary"
-                    >
-                        Добавить
-                    </button>
+
+                    </form>
+
                 </div>}
             </div>
 
         </>
     )
-        ;
+
 }
 
 export default StockChartInfoFinal;
