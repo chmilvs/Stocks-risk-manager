@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Area, AreaChart, Brush, Tooltip, XAxis, YAxis} from 'recharts';
 
-function StockChartInfo({stockName}) {
+function StockChartInfoFinal({stockName}) {
     const [info, setInfo] = useState(null)
     const [ticker, setTicker] = useState(null)
     const [timePeriod, setTimePeriod] = useState('')
@@ -35,11 +35,11 @@ function StockChartInfo({stockName}) {
         const {name} = event.target;
         // console.log(name)
 
-        let URL2 = `https://financialmodelingprep.com/api/v3/historical-chart/${name}/${ticker.toUpperCase()}?apikey=3013358465f12be91f11f2c28a4cfd71`
+        let URL2 = `https://financialmodelingprep.com/api/v3/${timePeriod}/${name}/${ticker.toUpperCase()}?apikey=3013358465f12be91f11f2c28a4cfd71`
 
-        // if (name === 'TIME_SERIES_MONTHLY_ADJUSTED') setTimePeriod('Monthly Adjusted Time Series')
-        // else if (name === 'TIME_SERIES_WEEKLY_ADJUSTED') setTimePeriod('Weekly Adjusted Time Series')
-        // else if (name === 'TIME_SERIES_DAILY_ADJUSTED') setTimePeriod('Time Series (Daily)')
+        if (name === '1day') setTimePeriod('historical-price-full')
+        else if (name === '4hour') setTimePeriod('historical-price')
+        else if (name === '15min') setTimePeriod('historical-price')
 
         // console.log(URL2)
         setLoading(true)
@@ -99,7 +99,7 @@ function StockChartInfo({stockName}) {
                         </button>
 
                         <button onClick={refreshData} type="button"
-                                name="TIME_SERIES_MONTHLY_ADJUSTED" className="button primary">1 день
+                                name="1day" className="button primary">1 день
                         </button>
                     </div>}
                 </div>
@@ -126,4 +126,4 @@ function StockChartInfo({stockName}) {
         ;
 }
 
-export default StockChartInfo;
+export default StockChartInfoFinal;
