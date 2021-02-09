@@ -90,7 +90,7 @@ body.landing #header {
   .forMedia{
     display: block;
   }
-
+}
 
 .wrapper-media {
   display: flex;
@@ -124,4 +124,4 @@ body.landing #header {
 .nav__icon:hover {
   color: #5eb2ff;
 }
-}
+
