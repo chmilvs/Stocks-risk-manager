@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import "./RiskForm.css";
-import StockChartInfo from "../../StockChartInfo/StockChartInfo";
+import StockChartInfoFinal from "../../StockChartInfo/StockChartInfoFinal";
 import SearchList from "../../searchList/searchList";
 
 function RiskForm() {
   const [stockName, setStockName] = useState(null);
-  console.log(stockName);
+  console.log(stockName)
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
       <div className="riskform">
@@ -36,29 +36,10 @@ function RiskForm() {
               placeholder="Введите лот"
             />
           </div>
-          <ul className="alt">
-            Вывод:
-            <li>Текущая стоимость акции</li>
-            <li>Количество акций в лоте</li>
-            <li>Стоимость лота</li>
-            <li>Максимальный лот при заданном уровне риска</li>
-          </ul>
-
-          <button
-            style={{
-              marginTop: "10px",
-              marginBottom: "100px",
-              height: "3em",
-              fontSize: "15pt",
-            }}
-            className="button primary"
-          >
-            Добавить
-          </button>
         </form>
       </div>
       <div>
-        <StockChartInfo tickerName={stockName} />
+        <StockChartInfoFinal tickerName={stockName} />
       </div>
     </div>
   );

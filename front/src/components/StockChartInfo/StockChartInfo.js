@@ -3,15 +3,15 @@ import {Area, AreaChart, Brush, Tooltip, XAxis, YAxis} from 'recharts';
 
 function StockChartInfo({stockName}) {
     const [info, setInfo] = useState(null)
-    const [ticker, setTicker] = useState(null)
+    const [ticker, setTicker] = useState(stockName)
     const [timePeriod, setTimePeriod] = useState('')
     const [loading, setLoading] = useState(false)
     const [btnShow, setBtnShow] = useState(false)
     const [failureMssg, setFailureMssg] = useState('')
 
-    const inputHandler = (event) => {
-        setTicker(event.target.value.trim())
-    }
+    // const inputHandler = (event) => {
+    //     setTicker(event.target.value.trim())
+    // }
 
     const getInfo = (event) => {
         event.preventDefault()
@@ -65,19 +65,23 @@ function StockChartInfo({stockName}) {
     }
 
     !loading && info && Object.values(info[timePeriod]).map((el, index) => {
-        return data.push({"цена": Number(el["4. close"]), "дата": data2[index]})
+        return data.push({
+            "цена": Number(el["4. close"]),
+            "дата": data2[index].replace(/(\d+)-(\d+)-(\d+)/gi, '$3.$2.$1')
+        })
     })
     // console.log(data)
-    // console.log(data2)
+    console.log(data2)
     return (
         <>
             <div style={{marginTop: "210px"}}>
                 <div style={{marginLeft: "160px"}}>
                     <form onSubmit={getInfo}>
                         <button style={{marginBottom: "10px", height: "3em", fontSize: "15pt"}}
-                                className="button primary" type="submit">Поиск по тикеру
+                                className="button primary"
+                                type="submit">Поиск по тикеру
                         </button>
-                        <input name="inquiry" type="text" onChange={inputHandler}></input>
+                        {/*<input name="inquiry" type="text" onChange={inputHandler} placeholder="Например: AAPL"></input>*/}
 
                         {failureMssg}
 
@@ -97,6 +101,7 @@ function StockChartInfo({stockName}) {
                         </button>
                     </div>}
                 </div>
+
                 {data && <AreaChart width={710} height={370} data={data.reverse().slice(-100)}
                                     margin={{top: 20, right: 150, left: 100, bottom: 20}}>
                     <defs>
@@ -110,11 +115,13 @@ function StockChartInfo({stockName}) {
                     <Brush dataKey="дата" height={30} stroke="#8884d8"/>
                     <Area type="monotone" dataKey="цена" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)"/>
 
-                    <Tooltip/>
+                    <Tooltip formatter={(label) => label + " USD"}/>
                 </AreaChart>}
             </div>
+
         </>
-    );
+    )
+        ;
 }
 
 export default StockChartInfo;
