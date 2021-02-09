@@ -75,7 +75,6 @@ function StockChartInfoFinal({tickerName}) {
                                 style={{marginLeft: "5px", marginRight: "5px", fontSize: "8pt", backgroundColor:"#8884d8", paddingLeft:"5px", paddingRight:"5px"}} name="4hour"
                                 className="button primary smallButtons">4 часа
                         </button>
-
                         <button onClick={refreshData} type="button"
                                 style={{marginLeft: "5px", marginRight: "5px", fontSize: "8pt", backgroundColor:"#8884d8", paddingLeft:"5px", paddingRight:"5px"}} name="1day"
                                 className="button primary smallButtons">1 день
