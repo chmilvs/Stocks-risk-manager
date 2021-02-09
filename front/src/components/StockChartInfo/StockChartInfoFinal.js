@@ -4,7 +4,6 @@ import {Area, AreaChart, Brush, Tooltip, XAxis, YAxis} from 'recharts';
 function StockChartInfoFinal({stockName}) {
     const [info, setInfo] = useState(null)
     const [ticker, setTicker] = useState(null)
-    const [timePeriod, setTimePeriod] = useState('')
     const [loading, setLoading] = useState(false)
     const [btnShow, setBtnShow] = useState(false)
     const [failureMssg, setFailureMssg] = useState('')
@@ -16,8 +15,7 @@ function StockChartInfoFinal({stockName}) {
     const getInfo = (event) => {
         event.preventDefault()
         let URL = `https://financialmodelingprep.com/api/v3/historical-chart/15min/${ticker.toUpperCase()}?apikey=3013358465f12be91f11f2c28a4cfd71`
-        // console.log(URL)
-        setTimePeriod('Time Series (Daily)')
+
         setLoading(true)
         fetch(URL)
             .then(res => res.json())
@@ -33,47 +31,27 @@ function StockChartInfoFinal({stockName}) {
 
     const refreshData = (event) => {
         const {name} = event.target;
-        // console.log(name)
+        let time = '';
 
-        let URL2 = `https://financialmodelingprep.com/api/v3/${timePeriod}/${name}/${ticker.toUpperCase()}?apikey=3013358465f12be91f11f2c28a4cfd71`
-
-        if (name === '1day') setTimePeriod('historical-price-full')
-        else if (name === '4hour') setTimePeriod('historical-price')
-        else if (name === '15min') setTimePeriod('historical-price')
-
-        // console.log(URL2)
+        if (name === '1day') time = 'historical-price-full'
+        else if (name === '4hour') time = 'historical-chart/4hour'
+        else if (name === '15min') time = 'historical-chart/15min'
+        let URL2 = `https://financialmodelingprep.com/api/v3/${time}/${ticker.toUpperCase()}?apikey=3013358465f12be91f11f2c28a4cfd71`
         setLoading(true)
         fetch(URL2)
             .then(res => res.json())
             .then(data => {
                 if (!data["Error Message"]) {
                     setFailureMssg('')
-                    setInfo(data)
+                    if (name === '1day') setInfo(data['historical'])
+                    else setInfo(data)
                     setBtnShow(true)
                     setLoading(false)
                 } else setFailureMssg('Тикер акции введен неправильно')
             })
-
+        console.log(info)
     }
 
-    // let data = [];
-    // let data2 = []
-
-    // if (info) {
-    //     for (let key in info[timePeriod]) {
-    //         data2.push(key)
-    //     }
-    // }
-    //
-    // !loading && info && Object.values(info[timePeriod]).map((el, index) => {
-    //     return data.push({
-    //         "цена": Number(el["4. close"]),
-    //         "дата": data2[index].replace(/(\d+)-(\d+)-(\d+)/gi, '$3.$2.$1')
-    //     })
-    // })
-    console.log(info)
-    // console.log(data)
-    // console.log(data2)
     return (
         <>
             <div style={{marginTop: "210px"}}>
@@ -104,7 +82,7 @@ function StockChartInfoFinal({stockName}) {
                     </div>}
                 </div>
 
-                {info && <AreaChart width={710} height={370} data={info.reverse()}
+                {!loading && info && <AreaChart width={710} height={370} data={info.reverse()}
                                     margin={{top: 20, right: 150, left: 100, bottom: 20}}>
                     <defs>
                         <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
