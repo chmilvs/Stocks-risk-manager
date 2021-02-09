@@ -67,21 +67,27 @@ function StockChartInfoFinal({tickerName}) {
                     {/*</form>*/}
                     {btnShow && <div>
                         <button onClick={refreshData} type="button"
-                                name="15min" className="button primary">15 мин
+                                style={{marginRight: "5px", fontSize: "8pt", backgroundColor:"#8884d8",paddingLeft:"5px", paddingRight:"5px"}} name="15min"
+                                className="button primary smallButtons">15 мин
                         </button>
 
                         <button onClick={refreshData} type="button"
-                                style={{margin: "10px"}} name="4hour"
-                                className="button primary">4 часа
+                                style={{marginLeft: "5px", marginRight: "5px", fontSize: "8pt", backgroundColor:"#8884d8", paddingLeft:"5px", paddingRight:"5px"}} name="4hour"
+                                className="button primary smallButtons">4 часа
                         </button>
 
                         <button onClick={refreshData} type="button"
-                                name="1day" className="button primary">1 день
+                                style={{marginLeft: "5px", marginRight: "5px", fontSize: "8pt", backgroundColor:"#8884d8", paddingLeft:"5px", paddingRight:"5px"}} name="1day"
+                                className="button primary smallButtons">1 день
+                        </button>
+                        <button onClick={refreshData} type="button"
+                                style={{marginLeft: "5px", marginRight: "5px", fontSize: "8pt", backgroundColor:"#8884d8", paddingLeft:"5px", paddingRight:"5px"}} name="1day"
+                                className="button primary smallButtons">Обновить текущую цену
                         </button>
                     </div>}
                 </div>
 
-                {!loading && info && <AreaChart width={710} height={370} data={info.reverse()}
+                {!loading && info && <AreaChart width={710} height={300} data={info.reverse()}
                                                 margin={{top: 20, right: 150, left: 100, bottom: 20}}>
                     <defs>
                         <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
@@ -96,7 +102,7 @@ function StockChartInfoFinal({tickerName}) {
 
                     <Tooltip formatter={(label) => label + " USD"}/>
                 </AreaChart>}
-                <div style={{marginLeft: "160px"}}>
+                {!loading && info && <div style={{marginLeft: "160px"}}>
                     <ul className="alt">
                         Вывод:
                         <li>Текущая стоимость акции</li>
@@ -116,7 +122,7 @@ function StockChartInfoFinal({tickerName}) {
                     >
                         Добавить
                     </button>
-                </div>
+                </div>}
             </div>
 
         </>
