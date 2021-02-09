@@ -8,24 +8,22 @@ function StockChartInfoFinal({tickerName}) {
     const [btnShow, setBtnShow] = useState(false)
     const [failureMssg, setFailureMssg] = useState('')
 
-    useEffect(()=> {
+    useEffect(() => {
+        if (tickerName !== null) {
+            let URL = `https://financialmodelingprep.com/api/v3/historical-chart/15min/${tickerName.toUpperCase()}?apikey=3013358465f12be91f11f2c28a4cfd71`
 
-
-            if(tickerName !== null) {
-                let URL = `https://financialmodelingprep.com/api/v3/historical-chart/15min/${tickerName.toUpperCase()}?apikey=3013358465f12be91f11f2c28a4cfd71`
-
-                setLoading(true)
-                fetch(URL)
-                    .then(res => res.json())
-                    .then(data => {
-                        if (!data["Error Message"]) {
-                            setFailureMssg('')
-                            setInfo(data)
-                            setBtnShow(true)
-                            setLoading(false)
-                        } else setFailureMssg('Тикер акции введен неправильно')
-                    })
-            }
+            setLoading(true)
+            fetch(URL)
+                .then(res => res.json())
+                .then(data => {
+                    if (!data["Error Message"]) {
+                        setFailureMssg('')
+                        setInfo(data)
+                        setBtnShow(true)
+                        setLoading(false)
+                    } else setFailureMssg('Тикер акции введен неправильно')
+                })
+        }
 
     }, [tickerName])
 
@@ -84,7 +82,7 @@ function StockChartInfoFinal({tickerName}) {
                 </div>
 
                 {!loading && info && <AreaChart width={710} height={370} data={info.reverse()}
-                                    margin={{top: 20, right: 150, left: 100, bottom: 20}}>
+                                                margin={{top: 20, right: 150, left: 100, bottom: 20}}>
                     <defs>
                         <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
                             <stop offset="2%" stopColor="#8884d8" stopOpacity={0.8}/>
@@ -98,6 +96,27 @@ function StockChartInfoFinal({tickerName}) {
 
                     <Tooltip formatter={(label) => label + " USD"}/>
                 </AreaChart>}
+                <div style={{marginLeft: "160px"}}>
+                    <ul className="alt">
+                        Вывод:
+                        <li>Текущая стоимость акции</li>
+                        <li>Количество акций в лоте</li>
+                        <li>Стоимость лота</li>
+                        <li>Максимальный лот при заданном уровне риска</li>
+                    </ul>
+
+                    <button
+                        style={{
+                            marginTop: "10px",
+                            marginBottom: "100px",
+                            height: "3em",
+                            fontSize: "15pt",
+                        }}
+                        className="button primary"
+                    >
+                        Добавить
+                    </button>
+                </div>
             </div>
 
         </>
