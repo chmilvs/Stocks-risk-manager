@@ -2,6 +2,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import {useState} from 'react'
 import {signUpFetchAC} from '../../redux/actionCreators/authAC'
 import {Redirect} from 'react-router-dom'
+import Cleave from 'cleave.js/react'
 import './Auth.css'
 
 function RegForm({ setState }) {
@@ -48,7 +49,12 @@ function RegForm({ setState }) {
         <div className="deposit">
           <p>Введите размер вашего портфеля</p>
           <div className="col-6 col-12-xsmall">
-            <input value={deposit} onChange={(event) => setDeposit(event.target.value)} type="text" name="deposit" placeholder="Сумма" />
+          <Cleave placeholder="Введите размер депозита в USD"
+                    name="deposit"
+                    options={{numeral: true, numeralThousandsGroupStyle: 'thousand'}}
+                    value={deposit}
+                    onChange={(event) => setDeposit(event.target.value.replace(/,/gi, ''))}
+                    />
             <button className="button primary small">Добавить</button>
           </div>
         </div>
