@@ -85,7 +85,7 @@ function StockChartInfoFinal({tickerName, setFailureMssg, sumToSpend}) {
                         </linearGradient>
                     </defs>
                     <XAxis dataKey="date" hide={true}/>
-                    <YAxis/>
+                    <YAxis type="number" domain={['auto', 'auto']} />
                     <Brush dataKey="date" height={30} stroke="#8884d8"/>
                     <Area type="monotone" dataKey="close" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)"/>
                     <Tooltip formatter={(label) => label + " USD"}/>
