@@ -5,6 +5,7 @@ function RiskPage() {
     return (
         <>
             <RiskForm/>
+
         </>
     );
 }

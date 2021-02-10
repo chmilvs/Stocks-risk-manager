@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState,memo} from 'react';
 import {Area, AreaChart, Brush, Tooltip, XAxis, YAxis} from 'recharts';
 import {fetchTickers, refreshActualPrice, refreshData} from '../../fetchFunctions/fetchFunction'
 
