@@ -1,5 +1,6 @@
 export const SIGN_UP_URL = 'http://localhost:4000/api/auth/register'
 export const LOG_IN_URL = 'http://localhost:4000/api/auth/login'
+export const UPDATE_PROFILE_URL = 'http://localhost:4000/api/auth/update'
 export const PROFILE_URL = 'http://localhost:4000/api/auth'
 export const GET_ALL_STOCKS = 'https://financialmodelingprep.com/api/v3/stock/list'
 export const ADD_STOCK_URL = 'http://localhost:4000/api/stock'

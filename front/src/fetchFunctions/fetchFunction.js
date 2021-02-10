@@ -2,6 +2,7 @@ import {API_KEY, GET_ALL_STOCKS} from "../redux/utils/utils";
 
 export const fetchTickers = (tickerName, setLoading, setInfo, setBtnShow, setFailureMssg, setActualPrice) => {
     if (tickerName !== null) {
+        tickerName.split('.').join('%2E')
         console.log('here1')
         let URL = `https://financialmodelingprep.com/api/v3/historical-chart/15min/${tickerName}`
         setLoading(true)
@@ -17,10 +18,13 @@ export const fetchTickers = (tickerName, setLoading, setInfo, setBtnShow, setFai
             })
 
         setLoading(true)
+        tickerName.split('.').join('%2E')
         let urlForActualPrice = `https://financialmodelingprep.com/api/v3/quote-short/${tickerName}`
+        console.log(urlForActualPrice)
         fetch(`${urlForActualPrice}${API_KEY}`)
             .then(res => res.json())
             .then(data => {
+                console.log(data)
                 if (!data["Error Message"]) {
                     setFailureMssg('')
                     setActualPrice(data[0]['price'].toFixed(2))
@@ -33,7 +37,7 @@ export const fetchTickers = (tickerName, setLoading, setInfo, setBtnShow, setFai
 
 export const refreshActualPrice = (tickerName, setFailureMssg, setActualPrice, setBtnShow, setLoading) => {
     console.log('here3')
-
+    tickerName.split('.').join('%2E')
     let urlForActualPrice2 = `https://financialmodelingprep.com/api/v3/quote-short/${tickerName}`
     fetch(`${urlForActualPrice2}${API_KEY}`)
         .then(res => res.json())
@@ -52,7 +56,7 @@ export const refreshData = (event, tickerName, setLoading, setFailureMssg, setIn
 
     const {name} = event.target;
     let time = '';
-
+    tickerName.split('.').join('%2E')
     if (name === '1day') time = 'historical-price-full'
     else if (name === '4hour') time = 'historical-chart/4hour'
     else if (name === '15min') time = 'historical-chart/15min'

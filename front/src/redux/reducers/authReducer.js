@@ -1,4 +1,4 @@
-import {SAVE_NEWUSER, USER_LOGOUT} from "../types"
+import {ADD_STOCK, SAVE_NEWUSER, USER_LOGOUT} from "../types"
 
 const defaultState = {
     currentUser: {},
@@ -18,6 +18,13 @@ const authReducer = (state = defaultState, action) => {
                 ...state,
                 isLogged: false,
                 currentUser: {}
+            }
+        case ADD_STOCK :
+            state.currentUser.deposit -= (action.payload.price*action.payload.amountBuyed)
+            state.currentUser.stocks.push(action.payload)
+            return {
+                ...state
+
             }
         default:
             return state

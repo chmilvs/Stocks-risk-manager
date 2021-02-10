@@ -18,9 +18,13 @@ function Table() {
       .then((stockss) => {
         console.log(stockss.status);
         if(!stockss["Error Message"]) {
-        stockss.map((el, i) => {
-          stocks[i].companyName = el.name;
-          stocks[i].actualPrice = el.price;
+        stockss.map((el) => {
+            stocks.forEach(defaultStock =>{
+                if(defaultStock.tickerName==el.symbol){
+                    defaultStock.companyName = el.name
+                    defaultStock.actualPrice = el.price
+                }
+            })
         })
       } else {
           stocks.forEach(el => {
@@ -30,7 +34,7 @@ function Table() {
         } 
         setLoading(stocks);
       });
-  }}, []);
+  }}, [stocks]);
 
     return (
         <div className="table-wrapper">
@@ -49,7 +53,7 @@ function Table() {
                 </thead>
                 <tbody>
                 {loading && loading.map(stock => 
-                <tr key={stock.tickerName}>
+                <tr key={Math.random()}>
                     <td>{stock.companyName}</td>
                     <td>{stock.tickerName}</td>
                     <td>{stock.amountBuyed}</td>

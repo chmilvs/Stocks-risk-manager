@@ -31,6 +31,7 @@ router
                             amountBuyed,
                             tickerName
                         })
+                        user.deposit -=price*amountBuyed
                         user.stocks.push(stock)
                         await stock.save()
                         await user.save()

@@ -1,5 +1,5 @@
 import {SAVE_NEWUSER, USER_LOGOUT} from "../types"
-import {LOG_IN_URL, PROFILE_URL, SIGN_UP_URL} from "../utils/utils"
+import {LOG_IN_URL, PROFILE_URL, SIGN_UP_URL, UPDATE_PROFILE_URL} from "../utils/utils"
 import {clearErrorAC, errorsAC} from "./errorAC"
 
 
@@ -68,6 +68,30 @@ export const getProfileAC = () => {
         }
     }
 };
+
+export const updateOneFetchAC = ({username, password, phone, email, deposit}) => (
+    dispatch
+) => {
+    fetch(UPDATE_PROFILE_URL, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({username, password, phone, email, deposit,token})
+    })
+        .then((res) => res.json())
+        .then((updatedUser) => {
+            console.log(updatedUser)
+            if (updatedUser.success) {
+                dispatch(addUser(updatedUser.user));
+                dispatch(clearErrorAC())
+            } else {
+                dispatch(errorsAC(updatedUser.message));
+            }
+        });
+};
+
+
 
 export const logOutAC = () => {
     localStorage.removeItem("jwt")

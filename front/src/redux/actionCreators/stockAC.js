@@ -14,8 +14,8 @@ export const addStockAC = ({ actualPrice, tickerName, inquiry }) => (dispatch) =
 })
 .then(res => res.json())
 .then(newstock => {
-  if(newstock.status == 200) {
-    dispatch(newstock.stock)
+  if(newstock.success) {
+    dispatch(addStock(newstock.stock))
   } else {
     dispatch(errorsAC(newstock.message))
   }

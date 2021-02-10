@@ -108,6 +108,34 @@ router
         } catch (err) {
             res.json({success: false, message: err.message});
         }
-    });
+    })
+
+.post('/update',async(req,res)=>{
+    let {email,username,deposit,phone,token} = req.body;
+    try {
+        await jwt.verify(token, privateKey, async (err, decoded) => {
+            if (err) {
+                res.json({success: false, message: "Auth token expired"});
+            } else {
+                let user = await User.findOneAndUpdate({_id:decoded._id},{email,username,deposit,phone});
+
+                await user.save()
+                user = await User.findById(decoded._id).populate('stocks')
+                let sortFunction = (a, b) => {
+                    if(a.tickerName < b.tickerName) { return -1; }
+                    if(a.tickerName > b.tickerName) { return 1; }
+                    return 0;
+                }
+
+                res.json({
+                    success: true,
+                    user: {username: user.username, deposit:user.deposit, email: user.email, phone: user.phone, stocks: user.stocks.sort(sortFunction)}
+                })
+            }
+        });
+    } catch (err) {
+        res.status(400).json({success: false, message: err.message.toString()});
+    }
+})
 
 module.exports = router

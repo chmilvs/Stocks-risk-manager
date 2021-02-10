@@ -4,7 +4,7 @@ import Banner from './components/Banner/Banner'
 import Auth from './components/Auth/Auth'
 import RiskPage from "./components/RiskPage/RiskPage";
 import Dashboard from "./components/Dashboard/Dashboard";
-import UpdaitingForm from './components/Dashboard/UpdaitingForm/UpdaitingForm';
+import UpdateForm from './components/Dashboard/UpdaitingForm/UpdaitingForm';
 import Footer from "./components/Footer/Footer";
 import {useEffect} from 'react';
 import {getProfileAC} from './redux/actionCreators/authAC';
@@ -12,8 +12,8 @@ import {useDispatch} from 'react-redux';
 import PrivateRouter from './components/PrivateRouters/PrivateRouter'
 import MainPage from './components/Banner/Banner'
 import ChatWindow from "./components/ChatWindow/ChatWindow";
-import io from "socket.io-client";
-const socket = io('http://localhost:8080/')
+// import io from "socket.io-client";
+// const socket = io('http://localhost:8080/')
 
 
 function App() {
@@ -24,13 +24,13 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar socket={socket} />
+      <NavBar />
       <Switch>
         <Route exact path="/">
           <MainPage/>
         </Route>
         <Route path="/chat/">
-          <ChatWindow socket={socket}/>
+          <ChatWindow/>
         </Route>
         <Route path="/auth">
           <Auth />
@@ -43,7 +43,7 @@ function App() {
             <Dashboard />
           </Route>
           <Route path="/update">
-              <UpdaitingForm />
+              <UpdateForm />
             </Route>
         </PrivateRouter>
       </Switch>
