@@ -1,14 +1,28 @@
 import './Table.css';
 import {useSelector} from 'react-redux'
-import {useEffect} from 'react'
+import {useEffect, useState} from 'react'
+import { API_KEY, GET_COMPANY_NAMES } from '../../../redux/utils/utils';
 function Table() {
   const stocks = useSelector(state => state.auth.currentUser.stocks)
-  console.log(stocks);
+  const [loading, setLoading] = useState([])
+
   useEffect(() => {
-    fetch('https://financialmodelingprep.com/api/v3/quote/')
-    .then(res => res.json())
-    .then(stocks)
-  })
+    const textArr = stocks
+      .map((el) => {
+        return el.tickerName;
+      })
+      .join();
+    fetch(`${GET_COMPANY_NAMES}${textArr}${API_KEY}`)
+      .then((res) => res.json())
+      .then((stockss) => {
+        stockss.map((el, i) => {
+          stocks[i].companyName = el.name;
+          stocks[i].actualPrice = el.price;
+        });
+        setLoading(stocks);
+      });
+  }, []);
+
     return (
         <div className="table-wrapper">
             <table>
@@ -25,15 +39,15 @@ function Table() {
                 </tr>
                 </thead>
                 <tbody>
-                {stocks && stocks.map(stock => 
-                <tr>
-                    <td>Ante turpis integer</td>
+                {loading && loading.map(stock => 
+                <tr key={stock.tickerName}>
+                    <td>{stock.companyName}</td>
                     <td>{stock.tickerName}</td>
                     <td>{stock.amountBuyed}</td>
-                    <td>29.99</td>
-                    <td>29.99</td>
+                    <td>{stock.actualPrice}</td>
+                    <td>{(stock.amountBuyed * stock.actualPrice).toFixed(2)}</td>
                     <td>{stock.price}</td>
-                    <td>{stock.amountBuyed * stock.price}</td>
+                    <td>{(stock.amountBuyed * stock.price).toFixed(2)}</td>
                     <td>+/-</td>
                 </tr>
                             )}
