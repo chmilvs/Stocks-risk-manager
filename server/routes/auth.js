@@ -19,7 +19,7 @@ router
             return res.status(400).json({success:false,message:errors.array()})
             }
             else {
-                let {email, password, username} = req.body;
+                let {email, password, username,deposit} = req.body;
                 let phone = null;
                 if (req.body.phone) {
                     phone = req.body.phone;
@@ -30,6 +30,7 @@ router
                         email,
                         password: await bcrypt.hash(password, saltRounds),
                         phone,
+                        deposit
                     });
                     await user.save();
                     const token = await jwt.sign(
@@ -43,7 +44,7 @@ router
                     res.status(200).json({
                         success: true,
                         token,
-                        user: {username: user.username, email: user.email, phone: user.phone, stocks: user.stocks},
+                        user: {username: user.username, deposit:user.deposit, email: user.email, phone: user.phone, stocks: user.stocks},
                     });
                 } catch (err) {
                     res.status(400).json({success: false, message: err.message.toString()});
