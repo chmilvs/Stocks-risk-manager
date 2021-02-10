@@ -39,7 +39,7 @@ router
                         privateKey,
                         {expiresIn: 60 * 360}
                     );
-
+                    user.populate('stocks')
                     res.status(200).json({
                         success: true,
                         token,
@@ -61,7 +61,7 @@ router
             }
             else {
                 try {
-                    const user = await User.findOne({username: username});
+                    const user = await User.findOne({username: username}).populate('stocks');
                     if (user && (await bcrypt.compare(password, user.password))) {
                         const token = await jwt.sign(
                             {
@@ -91,10 +91,16 @@ router
                 if (err) {
                     res.json({success: false, message: "Auth token expired"});
                 } else {
-                    const user = await User.findById(decoded._id);
+                    const user = await User.findById(decoded._id).populate('stocks');
+                    let sortFunction = (a, b) => {
+                      if(a.tickerName < b.tickerName) { return -1; }
+                      if(a.tickerName > b.tickerName) { return 1; }
+                      return 0;
+                     }
+                     
                     res.json({
                         success: true,
-                        user: {username: user.username, email: user.email, phone: user.phone, stocks: user.stocks}
+                        user: {username: user.username, email: user.email, phone: user.phone, stocks: user.stocks.sort(sortFunction)}
                     })
                 }
             });

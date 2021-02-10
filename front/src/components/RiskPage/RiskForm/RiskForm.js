@@ -1,29 +1,18 @@
 import React, {useState,useEffect} from 'react';
 import "./RiskForm.css";
-import StockChartInfoFinal from "../../StockChartInfo/StockChartInfoFinal";
 import SearchList from "../../searchList/searchList";
+import {handleSubmitForCalculation} from '../../../fetchFunctions/fetchFunction'
 
-function RiskForm() {
-  const [stockName, setStockName] = useState(null);
-  const [failureMssg, setFailureMssg] = useState('')
-  const [sumToSpend, setSumToSpend] = useState(0)
-
-const handleSubmit = (e) =>{
-    e.preventDefault()
-  const {budget,riskPercent} = e.target
-  let sum = parseInt(budget.value)/100*parseInt(riskPercent.value)
-  setSumToSpend(sum)
-}
-
+function RiskForm({setSumToSpend, stockName, setStockName, failureMssg}) {
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
       <div className="riskform">
-        <form autoComplete={"off"} onSubmit={handleSubmit}>
+        <form autoComplete={"off"} onSubmit={(event) => handleSubmitForCalculation(event, setSumToSpend)}>
           <div className="col-6 col-12-xsmall" >
             <SearchList stockName={stockName} setStockName={setStockName} />
           </div>
           {failureMssg && <div>
-            {failureMssg}}
+            {failureMssg}
           </div>}
           <div className="col-6 col-12-xsmall">
             <input
@@ -39,15 +28,16 @@ const handleSubmit = (e) =>{
               placeholder="Введите риск на акцию в %"
             />
           </div>
-          <div className="col-6 col-12-xsmall">
-            <div className="col-6 col-12-xsmall">
-            <input type={'submit'} value={'Рассчитать количество акций к покупке'}/>
-            </div>
-          </div>
+
+            <button style={{
+              marginTop: "10px",
+              marginBottom: "100px",
+              height: "3em",
+              fontSize: "15pt",
+            }} className="button primary">
+              Рассчитать
+            </button>
         </form>
-      </div>
-      <div>
-        <StockChartInfoFinal tickerName={stockName} sumToSpend={sumToSpend} setFailureMssg={setFailureMssg} />
       </div>
     </div>
   );

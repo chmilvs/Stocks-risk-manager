@@ -1,19 +1,13 @@
-import React, {useEffect, useState,memo} from 'react';
-import {Area, AreaChart, Brush, Tooltip, XAxis, YAxis} from 'recharts';
+import React, {useEffect, useState, memo} from 'react';
 import {fetchTickers, refreshActualPrice, refreshData} from '../../fetchFunctions/fetchFunction'
 
-function StockChartInfoFinal({tickerName, setFailureMssg, sumToSpend}) {
-    const [info, setInfo] = useState(null)
-    const [loading, setLoading] = useState(false)
+function StockChartInfoFinal({tickerName, loading, setLoading, sumToSpend, info, setInfo, setFailureMssg, setActualPrice, actualPrice}) {
     const [btnShow, setBtnShow] = useState(false)
-    const [actualPrice, setActualPrice] = useState(null)
+
     useEffect(() => {
         fetchTickers(tickerName, setLoading, setInfo, setBtnShow, setFailureMssg, setActualPrice)
-        console.log('gerererer')
     }, [tickerName])
-    const handleSubmit = (e) => {
-        e.preventDefault()
-    }
+
     return (
         <>
             <div style={{marginTop: "210px"}}>
@@ -76,43 +70,9 @@ function StockChartInfoFinal({tickerName, setFailureMssg, sumToSpend}) {
                     </div>
                     }
                 </div>
-                {!loading && info && <AreaChart width={780} height={300} data={info.reverse()}
-                                                margin={{top: 20, right: 150, left: 100, bottom: 20}}>
-                    <defs>
-                        <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="2%" stopColor="#8884d8" stopOpacity={0.8}/>
-                            <stop offset="70%" stopColor="#8884d8" stopOpacity={0}/>
-                        </linearGradient>
-                    </defs>
-                    <XAxis dataKey="date" hide={true}/>
-                    <YAxis/>
-                    <Brush dataKey="date" height={30} stroke="#8884d8"/>
-                    <Area type="monotone" dataKey="close" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)"/>
-                    <Tooltip formatter={(label) => label + " USD"}/>
-                </AreaChart>}
-                {!loading && info && <div style={{marginLeft: "160px"}}>
-                    {sumToSpend > 0 ? <ul className="alt">
-                        Вывод:
-                        <li>Текущая стоимость акции: {actualPrice} USD</li>
-                        <li>Максимальный лот: {Math.floor(sumToSpend / actualPrice)} </li>
-                    </ul> : null}
-                    <form onSubmit={handleSubmit}>
-                        <input name="inquiry" type="text" placeholder="Или введите свои данные"></input>
-                        <button
-                            style={{
-                                marginTop: "0",
-                                marginBottom: "100px",
-                                height: "3em",
-                                fontSize: "15pt",
-                            }}
-                            className="button primary">
-                            Добавить
-                        </button>
-                    </form>
-                </div>}
             </div>
         </>
     )
 }
 
-export default StockChartInfoFinal;
+export default memo(StockChartInfoFinal);

@@ -10,6 +10,6 @@ useMiddleware(app);
 // useErrorHandlers(app);
 
 app.use('/api/auth', authRouter)
-app.use('api/stock',stockRouter)
+app.use('/api/stock',stockRouter)
 
 module.exports = app;
