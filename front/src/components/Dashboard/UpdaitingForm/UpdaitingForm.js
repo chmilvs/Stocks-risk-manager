@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 
 function UpdaitingForm() {
   const data = useSelector(state => state.auth.currentUser)
-  console.log(data);
   return (
     <>
       <form>
