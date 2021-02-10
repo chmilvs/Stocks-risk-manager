@@ -10,6 +10,7 @@ import {useEffect} from 'react';
 import {getProfileAC} from './redux/actionCreators/authAC';
 import {useDispatch} from 'react-redux';
 import PrivateRouter from './components/PrivateRouters/PrivateRouter'
+import MainPage from './components/Banner/Banner'
 
 function App() {
   const dispatch = useDispatch();
@@ -21,13 +22,11 @@ function App() {
       <NavBar />
       <Switch>
         <Route exact path="/">
-          <Banner />
+          <MainPage/>
         </Route>
-
         <Route path="/auth">
           <Auth />
         </Route>
-
         <PrivateRouter>
           <Route path="/riskpage">
             <RiskPage />
