@@ -10,7 +10,7 @@ function RiskForm({setSumToSpend, stockName, setStockName, failureMssg}) {
   const depositChecker = (event) => {
     if(event.target.value.replace(/,/gi, '') <= deposit) {
       event.target.value = Math.max(0, parseInt(event.target.value.replace(/,/gi, '')) ).toString().slice(0,deposit.length)
-      
+
     } else event.target.value = deposit
   }
   return (
@@ -24,10 +24,9 @@ function RiskForm({setSumToSpend, stockName, setStockName, failureMssg}) {
             {failureMssg}
           </div>}
           <div className="col-6 col-12-xsmall">
-            <Cleave 
-                  onInput = {depositChecker}
+            <Cleave onInput = {depositChecker}
                    value={deposit}
-                    name="budget"
+                   name='budget'
                     options={{numeral: true, numeralThousandsGroupStyle: 'thousand'}}
                     />
           </div>
@@ -43,7 +42,7 @@ function RiskForm({setSumToSpend, stockName, setStockName, failureMssg}) {
               placeholder="Введите риск на акцию в %"
             />
           </div>
-          <div>
+            <div>
             <button style={{
               marginTop: "10px",
               marginBottom: "100px",
@@ -52,14 +51,11 @@ function RiskForm({setSumToSpend, stockName, setStockName, failureMssg}) {
             }} className="button primary">
               Рассчитать
             </button>
-          
             </div>
-    
         </form>
       </div>
     </div>
   );
 }
-
 
 export default RiskForm;

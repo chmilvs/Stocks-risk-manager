@@ -16,9 +16,9 @@ function CalculationField({loading, sumToSpend, info, actualPrice, tickerName}) 
                 {sumToSpend > 0 ? <ul className="alt">
                     Вывод:
                     <li>Текущая стоимость акции: {actualPrice} USD</li>
-                    <li>Максимальное количетво акций к покупке: {Math.floor(sumToSpend / actualPrice)} </li>
+                    <li>Максимальное количеcтво акций к покупке: {Math.floor(sumToSpend / actualPrice)} </li>
                     <form style={{marginTop: "10px"}} onSubmit={handleSubmit}>
-                        <input name="inquiry" type="number" placeholder="Или введите свои данные"></input>
+                        <input name="inquiry" type="number" onClick={e=>e.target.value=''} defaultValue={Math.floor(sumToSpend / actualPrice)} placeholder="Или введите свои данные"></input>
                         <button
                             style={{
                                 marginTop: "10px",

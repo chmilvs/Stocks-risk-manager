@@ -8,7 +8,7 @@ function SearchList({stockName, setStockName}) {
     const [stockArr,setStockArr] = useState([])
     useEffect(async() => {
         let stockSymbols = await getStocks()
-        if(stockSymbols.length >0){
+        if(stockSymbols){
             setStockArr(stockSymbols)
         }
         else{

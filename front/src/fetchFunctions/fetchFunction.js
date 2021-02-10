@@ -74,11 +74,13 @@ export const refreshData = (event, tickerName, setLoading, setFailureMssg, setIn
 export const getStocks = async () =>{
     const res = await fetch(`${GET_ALL_STOCKS}${API_KEY}`)
     const jsonedRes = await res.json()
-
-    const stocksArray = await jsonedRes.map(el=>{
-        return {name:`${el.name} ${el.symbol}`,value:el.symbol}
-    })
-    return stocksArray
+    console.log(jsonedRes['Error Message'])
+    if(!jsonedRes['Error Message']) {
+        const stocksArray = await jsonedRes.map(el => {
+            return {name: `${el.name} ${el.symbol}`, value: el.symbol}
+        })
+        return stocksArray
+    }
 }
 
 // export const handleSubmit = (event) => {
