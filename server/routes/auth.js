@@ -44,7 +44,7 @@ router
                     res.status(200).json({
                         success: true,
                         token,
-                        user: {id:user._id,username: user.username, deposit:user.deposit, email: user.email, phone: user.phone, stocks: user.stocks},
+                        user: {username: user.username, deposit:user.deposit, email: user.email, phone: user.phone, stocks: user.stocks},
                     });
                 } catch (err) {
                     res.status(400).json({success: false, message: err.message.toString()});
@@ -71,11 +71,11 @@ router
                             privateKey,
                             {expiresIn: 60 * 360}
                         );
-                        const {username, email, phone, stocks,deposit,_id} = user;
+                        const {username, email, phone, stocks,deposit} = user;
                         res.status(200).json({
                             success: true,
                             token,
-                            user: {id:_id,username, email, phone, stocks, deposit},
+                            user: {username, email, phone, stocks, deposit},
                         });
                     } else if (user) res.json({success: false, message: "Wrong password"});
                     else res.json({success: false, message: "No such user"});
@@ -101,7 +101,7 @@ router
                      
                     res.json({
                         success: true,
-                        user: {id:user._id,username: user.username, deposit:user.deposit, email: user.email, phone: user.phone, stocks: user.stocks.sort(sortFunction)}
+                        user: {username: user.username, deposit:user.deposit, email: user.email, phone: user.phone, stocks: user.stocks.sort(sortFunction)}
                     })
                 }
             });

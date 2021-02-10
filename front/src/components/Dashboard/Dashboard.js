@@ -1,21 +1,21 @@
 import PieDiagram from './PieDiagram/PieDiagram';
 import BarDiagram from './BarDiagram/BarDiagram';
 import Table from './Table/Table'
-import {Link} from 'react-router-dom'
-
 import './Dashboard.css'
+import { useSelector } from 'react-redux';
 
 function Dashboard() {
+  const deposit = useSelector(state => state.auth.currentUser.deposit)
     return (
         <div className="dashboard">
             <div className="table">
+            Мой <i class="fa fa-briefcase">: {deposit} USD</i>
                 <Table/>
             </div>
             <div className="diagrams">
                 <PieDiagram/>
                 <BarDiagram/>
             </div>
-            <Link to='/update'>Обновить данные</Link>
         </div>
     );
 }

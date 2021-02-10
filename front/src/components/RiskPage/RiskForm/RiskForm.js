@@ -1,10 +1,18 @@
-import React, {useState,useEffect} from 'react';
+import React from 'react';
 import "./RiskForm.css";
 import SearchList from "../../searchList/searchList";
 import {handleSubmitForCalculation} from '../../../fetchFunctions/fetchFunction'
 import Cleave from 'cleave.js/react';
+import { useSelector } from 'react-redux';
 
 function RiskForm({setSumToSpend, stockName, setStockName, failureMssg}) {
+  const deposit = useSelector(state => state.auth.currentUser.deposit)
+  const depositChecker = (event) => {
+    if(event.target.value.replace(/,/gi, '') <= deposit) {
+      event.target.value = Math.max(0, parseInt(event.target.value.replace(/,/gi, '')) ).toString().slice(0,deposit.length)
+
+    } else event.target.value = deposit
+  }
   return (
     <div style={{ display: "flex", justifyContent: "center", marginLeft:"50%" }}>
       <div className="riskform">
@@ -13,11 +21,12 @@ function RiskForm({setSumToSpend, stockName, setStockName, failureMssg}) {
             <SearchList stockName={stockName} setStockName={setStockName} />
           </div>
           {failureMssg && <div>
-            {failureMssg}}
+            {failureMssg}
           </div>}
           <div className="col-6 col-12-xsmall">
-            <Cleave placeholder="Введите размер депозита в USD"
-                    name="budget"
+            <Cleave onInput = {depositChecker}
+                   value={deposit}
+                   name='budget'
                     options={{numeral: true, numeralThousandsGroupStyle: 'thousand'}}
                     />
           </div>

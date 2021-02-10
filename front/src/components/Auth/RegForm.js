@@ -40,10 +40,7 @@ function RegForm({ setState }) {
           <input value={email} onChange={(event) => setEmail(event.target.value)} type="email" name="email" placeholder="Адрес эл. почты" />
         </div>
         <a onClick={() => setInputDeposit(!inputDeposit)} className="button primary small">Зарегистрироваться</a>
-
-         <a className="link" onClick={setState}>
-          У вас уже есть аккаунт?
-        </a>
+        <div><a className="link" onClick={setState}>У вас уже есть аккаунт?</a></div>
         </div>
           :
         <div className="deposit">

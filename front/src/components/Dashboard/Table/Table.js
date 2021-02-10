@@ -16,7 +16,8 @@ function Table() {
     fetch(`${GET_COMPANY_NAMES}${textArr}${API_KEY}`)
       .then((res) => res.json())
       .then((stockss) => {
-        if(stockss.status === 200) {
+        console.log(stockss.status);
+        if(!stockss["Error Message"]) {
         stockss.map((el, i) => {
           stocks[i].companyName = el.name;
           stocks[i].actualPrice = el.price;
