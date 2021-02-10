@@ -7,12 +7,12 @@ function RiskForm({setSumToSpend, stockName, setStockName, failureMssg}) {
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
       <div className="riskform">
-        <form autoComplete={"off"} onSubmit={(event) => handleSubmitForCalculation(event,setSumToSpend)}>
+        <form autoComplete={"off"} onSubmit={(event) => handleSubmitForCalculation(event, setSumToSpend)}>
           <div className="col-6 col-12-xsmall" >
             <SearchList stockName={stockName} setStockName={setStockName} />
           </div>
           {failureMssg && <div>
-            {failureMssg}}
+            {failureMssg}
           </div>}
           <div className="col-6 col-12-xsmall">
             <input
@@ -28,15 +28,15 @@ function RiskForm({setSumToSpend, stockName, setStockName, failureMssg}) {
               placeholder="Введите риск на акцию в %"
             />
           </div>
-          <div className="col-6 col-12-xsmall">
-            <div className="col-6 col-12-xsmall">
-              
-            <button className="button primary small">
+
+            <button style={{
+              marginTop: "10px",
+              marginBottom: "100px",
+              height: "3em",
+              fontSize: "15pt",
+            }} className="button primary">
               Рассчитать
             </button>
-          
-            </div>
-          </div>
         </form>
       </div>
     </div>
