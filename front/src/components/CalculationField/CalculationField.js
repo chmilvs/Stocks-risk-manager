@@ -1,8 +1,15 @@
 import React from 'react';
-import { handleSubmit } from '../../fetchFunctions/fetchFunction'
+import { useDispatch } from 'react-redux';
+import { addStockAC } from '../../redux/actionCreators/stockAC';
+// import { handleSubmit } from '../../fetchFunctions/fetchFunction'
 
-function CalculationField({loading, sumToSpend, info, actualPrice}) {
-
+function CalculationField({loading, sumToSpend, info, actualPrice, tickerName}) {
+  const dispatch = useDispatch()
+  const handleSubmit = (event) => {
+  event.preventDefault()
+  const { inquiry: { value: inquiry } } = event.target
+  dispatch(addStockAC({ inquiry, actualPrice, tickerName }))
+}
     return (
         <div>
             {!loading && info && <div style={{marginLeft: "160px"}}>
@@ -10,7 +17,7 @@ function CalculationField({loading, sumToSpend, info, actualPrice}) {
                     Вывод:
                     <li>Текущая стоимость акции: {actualPrice} USD</li>
                     <li>Максимальное количетво акций к покупке: {Math.floor(sumToSpend / actualPrice)} </li>
-                    <form style={{marginTop: "10px"}} onSubmit={(event) => handleSubmit(event)}>
+                    <form style={{marginTop: "10px"}} onSubmit={handleSubmit}>
                         <input name="inquiry" type="number" placeholder="Или введите свои данные"></input>
                         <button
                             style={{

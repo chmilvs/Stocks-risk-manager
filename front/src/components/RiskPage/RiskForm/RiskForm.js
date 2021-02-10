@@ -1,4 +1,4 @@
-import React, {useState,useEffect} from 'react';
+import React from 'react';
 import "./RiskForm.css";
 import SearchList from "../../searchList/searchList";
 import {handleSubmitForCalculation} from '../../../fetchFunctions/fetchFunction'
