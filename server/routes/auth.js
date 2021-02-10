@@ -19,7 +19,7 @@ router
             return res.status(400).json({success:false,message:errors.array()})
             }
             else {
-                let {email, password, username} = req.body;
+                let {email, password, username,deposit} = req.body;
                 let phone = null;
                 if (req.body.phone) {
                     phone = req.body.phone;
@@ -30,6 +30,7 @@ router
                         email,
                         password: await bcrypt.hash(password, saltRounds),
                         phone,
+                        deposit
                     });
                     await user.save();
                     const token = await jwt.sign(
@@ -43,7 +44,7 @@ router
                     res.status(200).json({
                         success: true,
                         token,
-                        user: {username: user.username, email: user.email, phone: user.phone, stocks: user.stocks},
+                        user: {username: user.username, deposit:user.deposit, email: user.email, phone: user.phone, stocks: user.stocks},
                     });
                 } catch (err) {
                     res.status(400).json({success: false, message: err.message.toString()});
@@ -70,11 +71,11 @@ router
                             privateKey,
                             {expiresIn: 60 * 360}
                         );
-                        const {username, email, phone, stocks} = user;
+                        const {username, email, phone, stocks,deposit} = user;
                         res.status(200).json({
                             success: true,
                             token,
-                            user: {username, email, phone, stocks},
+                            user: {username, email, phone, stocks, deposit},
                         });
                     } else if (user) res.json({success: false, message: "Wrong password"});
                     else res.json({success: false, message: "No such user"});
@@ -100,7 +101,7 @@ router
                      
                     res.json({
                         success: true,
-                        user: {username: user.username, email: user.email, phone: user.phone, stocks: user.stocks.sort(sortFunction)}
+                        user: {username: user.username, deposit:user.deposit, email: user.email, phone: user.phone, stocks: user.stocks.sort(sortFunction)}
                     })
                 }
             });
