@@ -18,7 +18,7 @@ router
             if (!errors) {
                 return res.status(400).json({success: false, message: errors.array()})
             }
-            const {price, amountBuyed, tickerName, token,} = req.body
+            const { price, amountBuyed, tickerName, token } = req.body
 
             try {
                 await jwt.verify(token, privateKey, async (err, decoded) => {

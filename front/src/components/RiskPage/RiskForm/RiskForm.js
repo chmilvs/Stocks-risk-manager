@@ -41,7 +41,11 @@ const handleSubmit = (e) =>{
           </div>
           <div className="col-6 col-12-xsmall">
             <div className="col-6 col-12-xsmall">
-            <input type={'submit'} value={'Рассчитать количество акций к покупке'}/>
+              
+            <button className="button primary small">
+              Рассчитать
+            </button>
+          
             </div>
           </div>
         </form>

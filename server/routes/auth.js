@@ -61,7 +61,7 @@ router
             }
             else {
                 try {
-                    const user = await User.findOne({username: username}.populate('stocks'));
+                    const user = await User.findOne({username: username}).populate('stocks');
                     if (user && (await bcrypt.compare(password, user.password))) {
                         const token = await jwt.sign(
                             {
