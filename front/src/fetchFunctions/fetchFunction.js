@@ -88,6 +88,6 @@ export const handleSubmit = (event) => {
 export const handleSubmitForCalculation = (event, setSumToSpend) =>{
     event.preventDefault()
     const {budget,riskPercent} = event.target
-    let sum = parseInt(budget.value)/100*parseInt(riskPercent.value)
+    let sum = parseInt(budget.value.replace(/,/gi, ''))/100*parseInt(riskPercent.value)
     setSumToSpend(sum)
 }
