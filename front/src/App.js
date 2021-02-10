@@ -11,18 +11,26 @@ import {getProfileAC} from './redux/actionCreators/authAC';
 import {useDispatch} from 'react-redux';
 import PrivateRouter from './components/PrivateRouters/PrivateRouter'
 import MainPage from './components/Banner/Banner'
+import ChatWindow from "./components/ChatWindow/ChatWindow";
+import io from "socket.io-client";
+const socket = io('http://localhost:8080/')
+
 
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getProfileAC());
   }, []);
+
   return (
     <BrowserRouter>
-      <NavBar />
+      <NavBar socket={socket} />
       <Switch>
         <Route exact path="/">
           <MainPage/>
+        </Route>
+        <Route path="/chat/">
+          <ChatWindow socket={socket}/>
         </Route>
         <Route path="/auth">
           <Auth />
