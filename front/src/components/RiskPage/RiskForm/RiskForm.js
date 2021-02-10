@@ -5,7 +5,7 @@ import {handleSubmitForCalculation} from '../../../fetchFunctions/fetchFunction'
 
 function RiskForm({setSumToSpend, stockName, setStockName, failureMssg}) {
   return (
-    <div style={{ display: "flex", justifyContent: "center" }}>
+    <div style={{ display: "flex", justifyContent: "center", marginLeft:"50%" }}>
       <div className="riskform">
         <form autoComplete={"off"} onSubmit={(event) => handleSubmitForCalculation(event, setSumToSpend)}>
           <div className="col-6 col-12-xsmall" >
@@ -28,7 +28,6 @@ function RiskForm({setSumToSpend, stockName, setStockName, failureMssg}) {
               placeholder="Введите риск на акцию в %"
             />
           </div>
-
             <button style={{
               marginTop: "10px",
               marginBottom: "100px",
