@@ -16,7 +16,7 @@ function StockChartInfoFinal({loading, info}) {
                 <YAxis type="number" domain={['auto', 'auto']} />
                 <Brush dataKey="date" height={30} stroke="#8884d8"/>
                 <Area type="monotone" dataKey="close" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)"/>
-                <Tooltip labelFormatter={(name) => name.replace(/(\d+)-(\d+)-(\d+)\s(\d+):(\d+):(\d+)/gi, '$3.$2.$1 $4:$5')} formatter={(label) => label + " USD"}/>
+                <Tooltip labelFormatter={(name) => name.replace(/(\d+)-(\d+)-(\d+)\s(\d+):(\d+):(\d+)/gi, '$3.$2.$1 $4:$5')} formatter={(label) => label.toFixed(2) + " USD"}/>
             </AreaChart>}
         </div>
     );
