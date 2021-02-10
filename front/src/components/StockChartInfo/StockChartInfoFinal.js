@@ -76,7 +76,7 @@ function StockChartInfoFinal({tickerName, setFailureMssg, sumToSpend}) {
                     </div>
                     }
                 </div>
-                {!loading && info && <AreaChart width={780} height={300} data={info.reverse()}
+                {!loading && info && <AreaChart width={750} height={300} data={info.reverse()}
                                                 margin={{top: 20, right: 150, left: 100, bottom: 20}}>
                     <defs>
                         <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
@@ -94,21 +94,22 @@ function StockChartInfoFinal({tickerName, setFailureMssg, sumToSpend}) {
                     {sumToSpend > 0 ? <ul className="alt">
                         Вывод:
                         <li>Текущая стоимость акции: {actualPrice} USD</li>
-                        <li>Максимальный лот: {Math.floor(sumToSpend / actualPrice)} </li>
+                        <li>Максимальное количетво акций к покупке: {Math.floor(sumToSpend / actualPrice)} </li>
+                        <form style={{marginTop:"10px"}} onSubmit={handleSubmit}>
+                            <input name="inquiry" type="number" placeholder="Или введите свои данные"></input>
+                            <button
+                                style={{
+                                    marginTop: "10px",
+                                    marginBottom: "100px",
+                                    height: "3em",
+                                    fontSize: "15pt",
+                                }}
+
+                                className="button primary">
+                                Добавить
+                            </button>
+                        </form>
                     </ul> : null}
-                    <form onSubmit={handleSubmit}>
-                        <input name="inquiry" type="text" placeholder="Или введите свои данные"></input>
-                        <button
-                            style={{
-                                marginTop: "0",
-                                marginBottom: "100px",
-                                height: "3em",
-                                fontSize: "15pt",
-                            }}
-                            className="button primary">
-                            Добавить
-                        </button>
-                    </form>
                 </div>}
             </div>
         </>
