@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import RiskForm from "./RiskForm/RiskForm";
 import CalculationField from '../CalculationField/CalculationField'
-import StockChartInfoFinal from '../StockChartInfo/StockChartInfoFinal';
-import ButtonsForTimePeriods from '../StockChartInfo/ButtonsForTimePeriods'
+import ButtonsForTimePeriods from '../StockChartInfo/ButtonsForTimePeriods';
+import StockChartInfoFinal from '../StockChartInfo/StockChartInfoFinal'
 
 function RiskPage(props) {
     const [loading, setLoading] = useState(false)
@@ -18,14 +18,12 @@ function RiskPage(props) {
                 <RiskForm stockName={stockName} setSumToSpend={setSumToSpend} stockName={stockName}
                           setStockName={setStockName} failureMssg={failureMssg}/>
             </div>
-            <div>
-
-                <StockChartInfoFinal loading={loading} setLoading={setLoading} setSumToSpend={setSumToSpend} info={info}
+            <div style={{paddingLeft:"5%"}}>
+                <ButtonsForTimePeriods loading={loading} setLoading={setLoading} setSumToSpend={setSumToSpend} info={info}
                                      setInfo={setInfo} setFailureMssg={setFailureMssg} setActualPrice={setActualPrice}
                                      actualPrice={actualPrice} tickerName={stockName}/>
-                <ButtonsForTimePeriods loading={loading} info={info}/>
+                <StockChartInfoFinal loading={loading} info={info}/>
                 <CalculationField loading={loading} sumToSpend={sumToSpend} info={info} actualPrice={actualPrice}/>
-
             </div>
         </div>
     );

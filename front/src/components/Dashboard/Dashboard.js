@@ -1,6 +1,8 @@
 import PieDiagram from './PieDiagram/PieDiagram';
 import BarDiagram from './BarDiagram/BarDiagram';
 import Table from './Table/Table'
+import {Link} from 'react-router-dom'
+
 import './Dashboard.css'
 
 function Dashboard() {
@@ -13,6 +15,7 @@ function Dashboard() {
                 <PieDiagram/>
                 <BarDiagram/>
             </div>
+            <Link to='/update'>Обновить данные</Link>
         </div>
     );
 }

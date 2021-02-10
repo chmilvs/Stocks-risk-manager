@@ -5,7 +5,7 @@ import {clearErrorAC, errorsAC} from "./errorAC"
 
 const token = JSON.parse(localStorage.getItem('jwt'))
 
-export const signUpFetchAC = ({username, password, phone, email}) => (
+export const signUpFetchAC = ({username, password, phone, email, deposit}) => (
     dispatch
 ) => {
     fetch(SIGN_UP_URL, {
@@ -13,7 +13,7 @@ export const signUpFetchAC = ({username, password, phone, email}) => (
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({username, password, phone, email})
+        body: JSON.stringify({username, password, phone, email, deposit})
     })
         .then((res) => res.json())
         .then((newuser) => {
