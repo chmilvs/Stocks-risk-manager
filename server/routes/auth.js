@@ -71,11 +71,11 @@ router
                             privateKey,
                             {expiresIn: 60 * 360}
                         );
-                        const {username, email, phone, stocks} = user;
+                        const {username, email, phone, stocks,deposit} = user;
                         res.status(200).json({
                             success: true,
                             token,
-                            user: {username, email, phone, stocks},
+                            user: {username, email, phone, stocks, deposit},
                         });
                     } else if (user) res.json({success: false, message: "Wrong password"});
                     else res.json({success: false, message: "No such user"});
@@ -101,7 +101,7 @@ router
                      
                     res.json({
                         success: true,
-                        user: {username: user.username, email: user.email, phone: user.phone, stocks: user.stocks.sort(sortFunction)}
+                        user: {username: user.username, deposit:user.deposit, email: user.email, phone: user.phone, stocks: user.stocks.sort(sortFunction)}
                     })
                 }
             });
