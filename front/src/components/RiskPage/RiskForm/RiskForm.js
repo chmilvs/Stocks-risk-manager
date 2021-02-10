@@ -33,7 +33,6 @@ function RiskForm({setSumToSpend, stockName, setStockName, failureMssg}) {
               placeholder="Введите риск на акцию в %"
             />
           </div>
-            <div>
             <button style={{
               marginTop: "10px",
               marginBottom: "100px",
@@ -42,7 +41,8 @@ function RiskForm({setSumToSpend, stockName, setStockName, failureMssg}) {
             }} className="button primary">
               Рассчитать
             </button>
-
+          
+            </div>
           </div>
         </form>
       </div>
