@@ -9,6 +9,7 @@ import {useEffect} from 'react';
 import {getProfileAC} from './redux/actionCreators/authAC';
 import {useDispatch} from 'react-redux';
 import PrivateRouter from './components/PrivateRouters/PrivateRouter'
+import ChatWindow from "./components/ChatWindow/ChatWindow";
 
 function App() {
     const dispatch = useDispatch()
@@ -19,8 +20,12 @@ function App() {
         <BrowserRouter>
             <NavBar/>
             <Switch>
+
                 <Route exact path='/'>
                     <Banner/>
+                </Route>
+                <Route path='/chat'>
+                <ChatWindow/>
                 </Route>
 
                 <Route path='/auth'>
