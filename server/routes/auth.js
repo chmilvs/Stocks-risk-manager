@@ -61,7 +61,7 @@ router
             }
             else {
                 try {
-                    const user = await User.findOne({username: username}.populate('stocks'));
+                    const user = await User.findOne({username: username}).populate('stocks');
                     if (user && (await bcrypt.compare(password, user.password))) {
                         const token = await jwt.sign(
                             {
@@ -92,9 +92,15 @@ router
                     res.json({success: false, message: "Auth token expired"});
                 } else {
                     const user = await User.findById(decoded._id).populate('stocks');
+                    let sortFunction = (a, b) => {
+                      if(a.tickerName < b.tickerName) { return -1; }
+                      if(a.tickerName > b.tickerName) { return 1; }
+                      return 0;
+                     }
+                     
                     res.json({
                         success: true,
-                        user: {username: user.username, email: user.email, phone: user.phone, stocks: user.stocks}
+                        user: {username: user.username, email: user.email, phone: user.phone, stocks: user.stocks.sort(sortFunction)}
                     })
                 }
             });
