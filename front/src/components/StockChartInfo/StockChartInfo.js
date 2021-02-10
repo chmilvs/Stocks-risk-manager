@@ -77,7 +77,7 @@ function StockChartInfo({stockName}) {
             <div style={{marginTop: "210px"}}>
                 <div style={{marginLeft: "160px"}}>
                     <form onSubmit={getInfo}>
-                        <button style={{marginBottom: "10px", height: "3em", fontSize: "15pt"}}
+                            <button style={{marginBottom: "10px", height: "3em", fontSize: "15pt"}}
                                 className="button primary"
                                 type="submit">Поиск по тикеру
                         </button>
