@@ -5,7 +5,7 @@ import './Auth.css'
 
 function LoginForm({setState}) {
     const isLogged = useSelector(state => state.auth.isLogged)
-
+    const error = useSelector(state => state.errors)
     const dispatch = useDispatch()
     const logIn = (event) => {
         event.preventDefault()
@@ -17,7 +17,6 @@ function LoginForm({setState}) {
     }
 
     return (
-
         <div className="auth">
             <form onSubmit={logIn}>
                 <div className="col-6 col-12-xsmall">
