@@ -1,6 +1,26 @@
 import {Bar, BarChart, CartesianGrid, Legend, Tooltip, XAxis, YAxis} from 'recharts'
 
 function BarDiagram({loading}) {
+
+    loading.map(el => {
+        if ('price' !== 'Цена покупки') {
+            Object.defineProperty(el, 'Цена покупки',
+                Object.getOwnPropertyDescriptor(el, 'price'));
+            delete el['price'];
+        }
+        if ('companyName' !== 'Компания') {
+            Object.defineProperty(el, 'Компания',
+                Object.getOwnPropertyDescriptor(el, 'companyName'));
+            delete el['companyName'];
+        }
+        if ('actualPrice' !== 'Текущая цена') {
+            Object.defineProperty(el, 'Текущая цена',
+                Object.getOwnPropertyDescriptor(el, 'actualPrice'));
+            delete el['actualPrice'];
+        }
+    })
+
+
     return (
         <>
             <BarChart
@@ -14,13 +34,12 @@ function BarDiagram({loading}) {
                     bottom: 5,
                 }}
             >
-                {/*<CartesianGrid strokeDasharray="3 3"/>*/}
-                <XAxis dataKey="companyName" hide={true}/>
+                <XAxis dataKey="Компания" hide={true}/>
                 <YAxis/>
                 <Tooltip/>
                 <Legend/>
-                <Bar dataKey="price" fill="#8884d8"/>
-                <Bar dataKey="actualPrice" fill="#82ca9d"/>
+                <Bar dataKey="Цена покупки" fill="#8884d8"/>
+                <Bar dataKey="Текущая цена" fill="#82ca9d"/>
             </BarChart>
         </>
     );

@@ -41,7 +41,7 @@ function Dashboard() {
                 });
         }
     }, [stocks]);
-    console.log(loading)
+
     return (
         <div className="dashboard">
             <div className="table">

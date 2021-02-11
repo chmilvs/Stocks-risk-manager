@@ -25,11 +25,11 @@ function PieDiagram({loading}) {
             <PieChart width={500} height={350}>
                 <Pie
                     data={result}
-                    cx={200}
+                    cx={240}
                     cy={150}
                     labelLine={false}
                     label={renderCustomizedLabel}
-                    outerRadius={130}
+                    outerRadius={150}
                     fill="#8884d8"
                     dataKey="amountBuyed"
                     nameKey='companyName'
