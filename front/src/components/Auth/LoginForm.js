@@ -18,10 +18,11 @@ function LoginForm({setState}) {
 
     return (
         <div className="auth">
-            <form onSubmit={logIn}>
+            <form onSubmit={logIn} autoComplete={"off"}>
                 <div className="col-6 col-12-xsmall">
                     <input type="text" name="username" placeholder="Логин"/>
                 </div>
+                <div className="errors">{error.text == 'Такой пользователь отсутствует!' ? error.text : <></>}</div>
                 <div className="col-6 col-12-xsmall">
                     <input
                         type="password"
@@ -29,6 +30,7 @@ function LoginForm({setState}) {
                         placeholder="Пароль"
                     />
                 </div>
+                <div className="errors">{error.text == 'Неверный пароль!' ? error.text : <></>}</div>
                 <button className="button primary small">
                     Войти
                 </button>

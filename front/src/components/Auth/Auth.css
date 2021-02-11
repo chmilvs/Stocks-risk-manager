@@ -23,3 +23,6 @@ form {
     width: 220px;
 }
 
+.errors{
+  color: rgb(240, 64, 33);
+}
