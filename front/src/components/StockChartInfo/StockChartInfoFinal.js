@@ -4,7 +4,7 @@ import {Area, AreaChart, Brush, Tooltip, XAxis, YAxis} from "recharts";
 function StockChartInfoFinal({loading, info}) {
     return (
         <div>
-            {!loading && info && <AreaChart width={750} height={300} data={info}
+            {!loading && info && <AreaChart width={780} height={300} data={info}
                                             margin={{top: 20, right: 150, left: 100, bottom: 20}}>
                 <defs>
                     <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">

@@ -13,7 +13,7 @@ function UpdateForm() {
     dispatch(updateOneFetchAC({username,phone,email,deposit}))
   }
   return (
-    <>
+    <div style={{display:"flex", justifyContent:"center", marginBottom:"100px"}}>
       <form onSubmit={handleSubmit}>
       <label>Введите новые данные:</label>
         <label>Логин:</label>
@@ -34,7 +34,7 @@ function UpdateForm() {
         </div>
         <button className="button primary small">Обновить</button>
       </form>
-    </>
+    </div>
   );
 }
 
