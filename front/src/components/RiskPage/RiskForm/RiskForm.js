@@ -6,11 +6,11 @@ import Cleave from 'cleave.js/react';
 import { useSelector } from 'react-redux';
 
 function RiskForm({setSumToSpend, stockName, setStockName, failureMssg}) {
-  const deposit = useSelector(state => state.auth.currentUser.deposit)
-  const depositChecker = (event) => {
-    if(event.target.value.replace(/,/gi, '') <= deposit) {
-      event.target.value = Math.max(0, parseInt(event.target.value.replace(/,/gi, '')) ).toString().slice(0,deposit.length)
+    const deposit = useSelector(state => state.auth.currentUser.deposit)
 
+  const depositChecker = (event) => {
+      let value = event.target.value.replace(/,/gi, '')
+      if( +value <= +deposit){
     } else event.target.value = deposit
   }
   return (
