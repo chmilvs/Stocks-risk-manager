@@ -5,6 +5,7 @@ import Table from './Table/Table'
 import './Dashboard.css'
 import {useSelector} from 'react-redux';
 import {API_KEY, GET_COMPANY_NAMES} from "../../redux/utils/utils";
+import {logInFetchAC} from "../../redux/actionCreators/authAC";
 
 function Dashboard() {
     const deposit = useSelector(state => state.auth.currentUser.deposit)
@@ -12,6 +13,7 @@ function Dashboard() {
     const [loading, setLoading] = useState([])
     const expired = 'Apikey expired'
     useEffect(() => {
+        console.log('ХЕР')
         const textArr = stocks
             .map((el) => {
                 return el.tickerName;
@@ -21,7 +23,6 @@ function Dashboard() {
             fetch(`${GET_COMPANY_NAMES}${textArr}${API_KEY}`)
                 .then((res) => res.json())
                 .then((stockss) => {
-                    console.log(stockss.status);
                     if (!stockss["Error Message"]) {
                         stockss.map((el) => {
                             stocks.forEach(defaultStock => {
@@ -35,12 +36,13 @@ function Dashboard() {
                         stocks.forEach(el => {
                             el.companyName = expired
                             el.actualPrice = expired
+                    console.log(el)
                         })
                     }
                     setLoading(stocks);
                 });
         }
-    }, [stocks]);
+    }, [stocks, loading]);
 
     return (
         <div className="dashboard">
@@ -50,7 +52,7 @@ function Dashboard() {
             </div>
             <div className="diagrams">
                 <PieDiagram loading={loading}/>
-                <BarDiagram loading={loading}/>
+                { loading ? <BarDiagram loading={loading}/> : false }
             </div>
         </div>
     );
