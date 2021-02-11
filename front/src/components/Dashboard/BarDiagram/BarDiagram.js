@@ -2,7 +2,7 @@ import {Bar, BarChart, CartesianGrid, Legend, Tooltip, XAxis, YAxis} from 'recha
 
 function BarDiagram({loading}) {
 
-    loading.map(el => {
+    [...loading].map(el => {
         if ('price' !== 'Цена покупки') {
             Object.defineProperty(el, 'Цена покупки',
                 Object.getOwnPropertyDescriptor(el, 'price'));
