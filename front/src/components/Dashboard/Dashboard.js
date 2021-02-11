@@ -50,7 +50,7 @@ function Dashboard() {
             </div>
             <div className="diagrams">
                 <PieDiagram loading={loading}/>
-                <BarDiagram/>
+                <BarDiagram loading={loading}/>
             </div>
         </div>
     );
