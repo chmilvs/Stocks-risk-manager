@@ -21,7 +21,7 @@ function UpdateForm() {
     history.push('/dashboard')
   }
   return (
-    <>
+    <div style={{display:"flex", justifyContent:"center", marginBottom:"100px"}}>
       <form onSubmit={handleSubmit}>
         <label>Введите новые данные:</label>
         <label>Логин:</label>
