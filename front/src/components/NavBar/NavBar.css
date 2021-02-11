@@ -1,5 +1,14 @@
-#page-wrapper {
-    padding-top: 3.5em;
+nav {
+    background: #45AD7E;
+    box-shadow: 0 0 0.25em 0 rgba(0, 0, 0, 0.25);
+    cursor: default;
+    height: 3.5em;
+    left: 0;
+    line-height: 3.5em;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
 }
 
 #header {
@@ -59,7 +68,7 @@
 }
 
 #header nav ul li.active > a, #header nav ul li.active > span {
-    color: #e44c65;
+    color: #45AD7E;
 }
 
 #header nav ul li > ul {
@@ -81,7 +90,7 @@ body.landing #header {
 .forMedia {
   display: none;
   margin-left: 15px;
-  background-color: #e44c65;
+  background-color: #45AD7E;
   border-radius: 4px;
   height: auto;
 }
@@ -122,6 +131,5 @@ body.landing #header {
 }
 
 .nav__icon:hover {
-  color: #5eb2ff;
+  color: #45AD7E;
 }
-

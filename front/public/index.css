@@ -79,7 +79,7 @@ html {
 }
 
 html, body {
-    background: #1c1d26;
+    background: #17242D;
 }
 
 body.is-preload *, body.is-preload *:before, body.is-preload *:after {
@@ -94,7 +94,7 @@ body.is-preload *, body.is-preload *:before, body.is-preload *:after {
 }
 
 body, input, select, textarea {
-    color: rgba(255, 255, 255, 0.75);
+    color: #17242D;
     font-family: "Roboto", Helvetica, sans-serif;
     font-size: 15pt;
     font-weight: 100;
@@ -107,12 +107,12 @@ a {
     -ms-transition: border-color 0.2s ease-in-out, color 0.2s ease-in-out;
     transition: border-color 0.2s ease-in-out, color 0.2s ease-in-out;
     border-bottom: dotted 1px;
-    color: #e44c65;
+    color: #45AD7E;
     text-decoration: none;
 }
 
 a:hover {
-    color: #e44c65 !important;
+    color: #45AD7E !important;
     border-bottom-color: transparent;
 }
 
@@ -1872,7 +1872,7 @@ header.major {
 }
 
 header.major:after {
-    background: #e44c65;
+    background: #45AD7E;
     content: '';
     display: inline-block;
     height: 0.2em;
@@ -2145,7 +2145,7 @@ header.major:after {
 }
 
 .spotlight.style1 .content {
-    border-color: #e44c65;
+    border-color: #45AD7E;
 }
 
 .spotlight.style2 .content {
@@ -2207,7 +2207,7 @@ body.is-touch .spotlight {
 }
 
 .wrapper.style2 {
-    background: #e44c65;
+    background: #45AD7E;
 }
 
 .wrapper.style2 input[type="text"]:focus,
@@ -2243,7 +2243,7 @@ body.is-touch .spotlight {
 .wrapper.style2 input[type="button"].primary,
 .wrapper.style2 .button.primary {
     background-color: #ffffff;
-    color: #e44c65 !important;
+    color: #45AD7E !important;
 }
 
 .wrapper.style2 input[type="submit"].primary:hover, .wrapper.style2 input[type="submit"].primary:active,
@@ -2347,7 +2347,7 @@ body.is-touch .spotlight {
 }
 
 .dropotron > li.active > a, .dropotron > li.active > span {
-    color: #e44c65;
+    color: #45AD7E;
 }
 
 .dropotron.level-0 {
@@ -2413,7 +2413,7 @@ input[type="password"]:focus,
 input[type="email"]:focus,
 select:focus,
 textarea:focus {
-    border-color: #e44c65;
+    border-color: #45AD7E;
 }
 
 input[type="text"],
@@ -2458,7 +2458,7 @@ textarea {
 }
 
 .button.primary {
-    background-color: #e44c65;
+    background-color: #45AD7E;
     box-shadow: none;
     color: #ffffff !important;
 }

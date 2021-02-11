@@ -1,6 +1,6 @@
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import NavBar from './components/NavBar/NavBar'
-import Banner from './components/Banner/Banner'
+import MainPage from './components/MainPage/MainPage'
 import Auth from './components/Auth/Auth'
 import RiskPage from "./components/RiskPage/RiskPage";
 import Dashboard from "./components/Dashboard/Dashboard";
@@ -10,7 +10,6 @@ import {useEffect} from 'react';
 import {getProfileAC} from './redux/actionCreators/authAC';
 import {useDispatch} from 'react-redux';
 import PrivateRouter from './components/PrivateRouters/PrivateRouter'
-import MainPage from './components/Banner/Banner'
 import ChatWindow from "./components/ChatWindow/ChatWindow";
 // import io from "socket.io-client";
 // const socket = io('http://localhost:8080/')

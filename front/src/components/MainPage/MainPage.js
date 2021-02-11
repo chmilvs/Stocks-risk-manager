@@ -1,6 +1,6 @@
-import './Banner.css'
+import './MainPage.css'
 
-function Banner() {
+function MainPage() {
 
     return (
         <>
@@ -48,4 +48,4 @@ function Banner() {
     );
 }
 
-export default Banner;
+export default MainPage;
