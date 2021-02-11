@@ -14,16 +14,22 @@ function PieDiagram({loading}) {
             </text>
         );
     };
+    let result = Object.values(loading.reduce((r, { amountBuyed, companyName }) => {
+        r[companyName] = r[companyName] || { companyName, amountBuyed: 0 };
+        r[companyName].amountBuyed += amountBuyed;
+        return r;
+    }, {}));
+
     return (
         <>
             <PieChart width={500} height={350}>
                 <Pie
-                    data={loading}
-                    cx={200}
+                    data={result}
+                    cx={240}
                     cy={150}
                     labelLine={false}
                     label={renderCustomizedLabel}
-                    outerRadius={130}
+                    outerRadius={150}
                     fill="#8884d8"
                     dataKey="amountBuyed"
                     nameKey='companyName'

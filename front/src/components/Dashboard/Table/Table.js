@@ -1,41 +1,5 @@
 import './Table.css';
-import {useSelector} from 'react-redux'
-import {useEffect, useState} from 'react'
-import { API_KEY, GET_COMPANY_NAMES } from '../../../redux/utils/utils';
 function Table({loading, expired}) {
-  // const stocks = useSelector(state => state.auth.currentUser.stocks)
-  // const [loading, setLoading] = useState([])
-
-  // useEffect(() => {
-  //   const textArr = stocks
-  //     .map((el) => {
-  //       return el.tickerName;
-  //     })
-  //     .join();
-  //     if(stocks.length>0){
-  //   fetch(`${GET_COMPANY_NAMES}${textArr}${API_KEY}`)
-  //     .then((res) => res.json())
-  //     .then((stockss) => {
-  //       console.log(stockss.status);
-  //       if(!stockss["Error Message"]) {
-  //       stockss.map((el) => {
-  //           stocks.forEach(defaultStock =>{
-  //               if(defaultStock.tickerName==el.symbol){
-  //                   defaultStock.companyName = el.name
-  //                   defaultStock.actualPrice = el.price
-  //               }
-  //           })
-  //       })
-  //     } else {
-  //         stocks.forEach(el => {
-  //             el.companyName = expired
-  //             el.actualPrice = expired
-  //         })
-  //       }
-  //       setLoading(stocks);
-  //     });
-  // }}, [stocks]);
-
     return (
         <div className="table-wrapper">
             <table>
@@ -43,7 +7,7 @@ function Table({loading, expired}) {
                 <tr>
                     <th>Название компании</th>
                     <th>Тикер</th>
-                    <th>Лот</th>
+                    <th>Кол-во акций</th>
                     <th>Цена сейчас, $</th>
                     <th>Стоимость сейчас, $</th>
                     <th>Цена покупки, $</th>

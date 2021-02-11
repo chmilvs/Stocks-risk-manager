@@ -1,15 +1,14 @@
 import React, {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useHistory}from 'react-router-dom'
-import {updateOneFetchAC} from "../../../redux/actionCreators/authAC";
-import ReactModal from 'react-modal'
-import './UpdatingForm.css'
+import {updateOneFetchAC} from "../../../redux/actionCreators/authAC"
+import ModalWindow from '../../ModalWindow/ModalWindow'
 
 function UpdateForm() {
   const history = useHistory()
   const [open, setOpen] = useState(false)
   const data = useSelector(state => state.auth.currentUser)
-  const dispatch =useDispatch()
+  const dispatch = useDispatch()
   const handleSubmit = (e) => {
     e.preventDefault()
     const {username:{value:username},phone:{value:phone},email:{value:email},deposit:{value:deposit}} = e.target
@@ -47,18 +46,7 @@ function UpdateForm() {
         </div>
         <button className="button primary small">Обновить</button>
       </form>
-      <div>
-      <ReactModal 
-           isOpen={open}
-           contentLabel="Minimal Modal Example"
-           className="Modal"
-           overlayClassName="Overlay"
-           onRequestClose={()=>setOpen(false)}
-        >
-          <div>Ваши изменения сохранены!</div>
-          <button className="button primary small" onClick={handleClick}>Вернуться в профиль</button>
-        </ReactModal>
-        </div>
+        <ModalWindow open={open} setOpen={setOpen} handleClick={handleClick} text={'Ваши изменения сохранены!'} />
      </div>
   );
 }
