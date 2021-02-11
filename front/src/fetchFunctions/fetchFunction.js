@@ -70,8 +70,8 @@ export const refreshData = (event, tickerName, setLoading, setFailureMssg, setIn
         .then(data => {
             if (!data["Error Message"]) {
                 setFailureMssg('')
-                if (name === '1day') setInfo(data['historical'])
-                else setInfo(data)
+                if (name === '1day') setInfo(data['historical'].reverse())
+                else setInfo(data.reverse())
                 setBtnShow(true)
                 setLoading(false)
             } else setFailureMssg('Тикер акции введен неправильно')
