@@ -77,8 +77,8 @@ router
                             token,
                             user: {username, email, phone, stocks, deposit},
                         });
-                    } else if (user) res.json({success: false, message: "Неверный пароль!"});
-                    else res.json({success: false, message: "Такой пользователь отсутсвует!"});
+                    } else if (user) res.json({success: false, message: 'Неверный пароль!'});
+                    else res.json({success: false, message: 'Такой пользователь отсутсвует!'});
                 } catch (err) {
                     res.status(400).json({success: false, message: err.message});
                 }
