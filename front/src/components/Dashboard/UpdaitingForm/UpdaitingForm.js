@@ -59,7 +59,7 @@ function UpdateForm() {
           <button className="button primary small" onClick={handleClick}>Вернуться в профиль</button>
         </ReactModal>
         </div>
-     </>
+     </div>
   );
 }
 
