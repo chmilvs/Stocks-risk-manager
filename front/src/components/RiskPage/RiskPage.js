@@ -22,7 +22,7 @@ function RiskPage(props) {
                 <ButtonsForTimePeriods loading={loading} setLoading={setLoading} setSumToSpend={setSumToSpend} info={info}
                                      setInfo={setInfo} setFailureMssg={setFailureMssg} setActualPrice={setActualPrice}
                                      actualPrice={actualPrice} tickerName={stockName}/>
-                <StockChartInfoFinal loading={loading} info={info}/>
+                <StockChartInfoFinal loading={loading} info={info} setInfo={setInfo}/>
                 <CalculationField loading={loading} sumToSpend={sumToSpend} info={info} tickerName={stockName} actualPrice={actualPrice}/>
             </div>
         </div>

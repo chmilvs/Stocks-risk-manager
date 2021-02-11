@@ -1,16 +1,17 @@
 import React from 'react';
 import {Area, AreaChart, Brush, Tooltip, XAxis, YAxis} from "recharts";
 
-function StockChartInfoFinal({loading, info}) {
+function StockChartInfoFinal({loading, info, setInfo}) {
 
-    // if(info !== null) {
-    //     info.map(el => {
+    // if(info) {
+    //     let a =info.map(el => {
     //         if ('close' !== 'Цена') {
     //             Object.defineProperty(el, 'Цена',
     //                 Object.getOwnPropertyDescriptor(el, 'close'));
     //             delete el['close'];
     //         }
     //     })
+    //     setInfo(a)
     //     console.log(info)
     // }
 
