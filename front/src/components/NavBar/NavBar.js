@@ -80,20 +80,20 @@ function NavBar({socket}) {
             <ul className="sidenav" id="mobile-demo">
                     {user.isLogged ? (
                         <>
-                            <li>
+                            <li className="sidenav-li">
                                 <Link to='/update'>Изменить профайл</Link>
                             </li>
-                            <li>
+                            <li className="sidenav-li">
                                 <Link to="/riskpage" className="">
                                     Расчет риска
                                 </Link>
                             </li>
-                            <li>
+                            <li className="sidenav-li">
                                 <Link to="/dashboard"  className="">
                                     Профиль
                                 </Link>
                             </li>
-                            <li>
+                            <li className="sidenav-li">
                                 <Link to={"/"} onClick={logOut} className="">
                                     Выйти
                                 </Link>
@@ -117,50 +117,3 @@ function NavBar({socket}) {
 }
 
 export default NavBar;
-
-//     return (
-//       <header id="header">
-//         <h1 id="logo">
-//           <Link to="/">Investhood Helper</Link>
-//         </h1>
-//         <nav id="nav">
-//           <ul>
-//             {user.isLogged ? (
-//               <>
-//               <li>
-//                <Link to='/update'>Изменить профайл</Link>
-//                </li>
-//                 <li>
-//                   <Link to="/riskpage" className="">
-//                     Расчет риска
-//                   </Link>
-//                 </li>
-//                 <li>
-//                   <Link to="/dashboard"  className="">
-//                     Профиль
-//                   </Link>
-//                 </li>
-//                 <li>
-//                   <Link to={"/"} onClick={logOut} className="">
-//                     Выйти
-//                   </Link>
-//                 </li>
-//                   {/*<li>*/}
-//                   {/*    <Link onClick={sendData} to={`/chat/}`}>*/}
-//                   {/*    Обсудить происходящее в чате :)*/}
-//                   {/*    </Link>*/}
-//                   {/*</li>*/}
-//               </>
-//             ) : (
-//               <li>
-//                 <Link to="/auth" className="">
-//                   Войти
-//                 </Link>
-//               </li>
-//             )}
-//           </ul>
-//         </nav>
-//       </header>
-//     );
-// }
-

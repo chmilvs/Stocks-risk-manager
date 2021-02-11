@@ -1,14 +1,11 @@
 #banner {
     background-attachment: fixed;
-    background-color: #272833;
-    background-image: url("../../images/banner.jpg");
+    background-image: url("./images/yq5P764.jpeg");
     background-position: center center;
     background-size: cover;
-    box-shadow: 0 0.25em 0.5em 0 rgba(0, 0, 0, 0.25);
     min-height: 100vh;
     position: relative;
     text-align: center;
-    z-index: 21;
 }
 
 #banner:before {
@@ -31,11 +28,9 @@
 
 #banner .content {
     display: inline-block;
-    margin-right: 1%;
     max-width: 95%;
-    padding: 6em;
+    padding: 10em;
     position: relative;
-    text-align: right;
     vertical-align: middle;
     z-index: 1;
 }
@@ -46,13 +41,18 @@
 }
 
 #banner .content header h2 {
-    font-size: 2.5em;
+    font-size: 5em;
     margin: 0;
 }
 
-#banner .content header p {
-    margin: 0.5em 0 0 0;
-    top: 0;
+#banner-title {
+    font-size: 8rem;
+    font-weight: 800;
+}
+
+#banner-text {
+    font-size: 2rem;
+    font-weight: 200;
 }
 
 #banner .content .image {
