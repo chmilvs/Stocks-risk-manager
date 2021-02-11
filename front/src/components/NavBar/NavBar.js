@@ -1,4 +1,4 @@
-import {Link, useHistory, useParams} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 import {logOutAC} from '../../redux/actionCreators/authAC';
 import {useEffect} from 'react'
@@ -7,7 +7,7 @@ import 'materialize-css/dist/css/materialize.min.css'
 import './NavBar.css'
 
 
-function NavBar({socket}) {
+function NavBar() {
     const user = useSelector(state => state.auth)
     const dispatch = useDispatch()
     const history = useHistory()
@@ -23,14 +23,6 @@ function NavBar({socket}) {
             let instances = M.Sidenav.init(elems, {});
         });
     }, []);
-
-    // const sendData = () => {
-    //     let {currentUser} = user
-    //     let {id,username} = currentUser
-    //     let roomname = 'StockDiscussion'
-    //         socket.connect()
-    //         socket.emit("joinRoom", ({username , roomname}));
-    //     }
 
     return (
         <>
@@ -60,11 +52,6 @@ function NavBar({socket}) {
                                                 Выйти
                                             </Link>
                                         </li>
-                                        {/*<li>*/}
-                                        {/*    <Link onClick={sendData} to={`/chat/}`}>*/}
-                                        {/*    Обсудить происходящее в чате :)*/}
-                                        {/*    </Link>*/}
-                                        {/*</li>*/}
                                     </>
                                 ) : (
                                     <li>
@@ -98,11 +85,6 @@ function NavBar({socket}) {
                                     Выйти
                                 </Link>
                             </li>
-                            {/*<li>*/}
-                            {/*    <Link onClick={sendData} to={`/chat/}`}>*/}
-                            {/*    Обсудить происходящее в чате :)*/}
-                            {/*    </Link>*/}
-                            {/*</li>*/}
                         </>
                     ) : (
                         <li>

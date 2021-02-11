@@ -1,6 +1,5 @@
 import React,{useState,useEffect} from 'react';
 import SelectSearch, {fuzzySearch} from "react-select-search";
-import {GET_ALL_STOCKS} from "../../redux/utils/utils";
 import s from './searchList.module.css'
 import {getStocks} from "../../fetchFunctions/fetchFunction";
 
