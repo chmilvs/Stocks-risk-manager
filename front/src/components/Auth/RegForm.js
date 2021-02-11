@@ -14,7 +14,7 @@ function RegForm({ setState }) {
   const emailErrorText = useSelector(state => state.errors.text.includes("email_1"))
   // const invalidError = useSelector(state => state.errors.text[0].msg)
   // console.log(errorText.text[0].msg);
-  
+
   const [inputDeposit, setInputDeposit] = useState(true);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -122,7 +122,7 @@ function RegForm({ setState }) {
               <></>
             )}
 
-            <a
+            <a id="reg-button"
               onClick={() => setInputDeposit(false)}
               className="button primary small"
             >
