@@ -31,3 +31,6 @@ form a {
     width: 100%;
 }
 
+.errors{
+  color: rgb(240, 64, 33);
+}

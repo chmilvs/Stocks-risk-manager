@@ -2,29 +2,17 @@ import {Bar, BarChart, CartesianGrid, Legend, Tooltip, XAxis, YAxis} from 'recha
 
 function BarDiagram({loading}) {
 
-    [...loading].map(el => {
-        if ('price' !== 'Цена покупки') {
-            Object.defineProperty(el, 'Цена покупки',
-                Object.getOwnPropertyDescriptor(el, 'price'));
-            delete el['price'];
-        }
-        if ('companyName' !== 'Компания') {
-            Object.defineProperty(el, 'Компания',
-                Object.getOwnPropertyDescriptor(el, 'companyName'));
-            delete el['companyName'];
-        }
-        if ('actualPrice' !== 'Текущая цена') {
-            Object.defineProperty(el, 'Текущая цена',
-                Object.getOwnPropertyDescriptor(el, 'actualPrice'));
-            delete el['actualPrice'];
-        }
-    })
+        loading.map(el => {
+            el['Цена покупки'] = el['price'];
+            el['Компания'] = el['companyName'];
+            el['Текущая цена'] = el['actualPrice'];
+        })
 
-
+    console.log(loading)
     return (
         <>
             <BarChart
-                width={500}
+                width={600}
                 height={300}
                 data={loading}
                 margin={{
@@ -34,12 +22,12 @@ function BarDiagram({loading}) {
                     bottom: 5,
                 }}
             >
-                <XAxis dataKey="Компания" hide={true}/>
+                <XAxis dataKey='Компания' hide={true}/>
                 <YAxis/>
                 <Tooltip/>
                 <Legend/>
-                <Bar dataKey="Цена покупки" fill="#8884d8"/>
-                <Bar dataKey="Текущая цена" fill="#82ca9d"/>
+                <Bar dataKey='Цена покупки' fill="#8884d8"/>
+                <Bar dataKey='Текущая цена' fill="#82ca9d"/>
             </BarChart>
         </>
     );
