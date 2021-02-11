@@ -1,19 +1,31 @@
 import React, {useEffect, useState} from 'react';
 import { useDispatch } from 'react-redux';
 import { addStockAC } from '../../redux/actionCreators/stockAC';
+import {useHistory} from 'react-router-dom';
 // import { handleSubmit } from '../../fetchFunctions/fetchFunction'
+import ModalWindow from '../ModalWindow/ModalWindow'
 
 function CalculationField({loading, sumToSpend, info, actualPrice, tickerName}) {
   const dispatch = useDispatch()
   const [valueToBuy, setValueToBuy] = useState(Math.floor(sumToSpend / actualPrice))
-    const handleSubmit = (event) => {
-  event.preventDefault()
-  const { inquiry: { value: inquiry } } = event.target
-  dispatch(addStockAC({ inquiry, actualPrice, tickerName }))
-}
-    useEffect(() => {
-        setValueToBuy(Math.floor(sumToSpend / actualPrice))
-    }, [sumToSpend, actualPrice])
+  const history = useHistory()
+  const [open, setOpen] = useState(false)
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setOpen(true);
+    const {
+      inquiry: { value: inquiry },
+    } = event.target;
+    dispatch(addStockAC({ inquiry, actualPrice, tickerName }));
+  };
+  useEffect(() => {
+    setValueToBuy(Math.floor(sumToSpend / actualPrice));
+  }, [sumToSpend, actualPrice]);
+
+  const handleClick = () => {
+    setOpen(false)
+    history.push('/dashboard')
+  }
 
     return (
         <div>
@@ -36,6 +48,7 @@ function CalculationField({loading, sumToSpend, info, actualPrice, tickerName}) 
                         </button>
                     </form>
                 </ul> : null}
+                    <ModalWindow open={open} setOpen={setOpen} handleClick={handleClick} text={'Акции добавлены в портфель!'} />
             </div>}
         </div>
     );
