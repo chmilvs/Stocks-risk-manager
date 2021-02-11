@@ -22,4 +22,12 @@ form {
 .link {
     width: 220px;
 }
+form a {
+    color: #45AD7E;
+    cursor: pointer;
+}
+
+#reg-button {
+    width: 100%;
+}
 
