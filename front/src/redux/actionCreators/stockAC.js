@@ -2,10 +2,11 @@ import { ADD_STOCK } from "../types"
 import { ADD_STOCK_URL } from "../utils/utils"
 import { errorsAC } from "./errorAC"
 
-const token = JSON.parse(localStorage.getItem('jwt'))
+let token = JSON.parse(localStorage.getItem('jwt'))
 
 export const addStockAC = ({ actualPrice, tickerName, inquiry }) => (dispatch) => {
   console.log(actualPrice, tickerName, inquiry, token);
+  token = JSON.parse(localStorage.getItem('jwt'))
   fetch(ADD_STOCK_URL, {
     method: "POST",
     headers: {

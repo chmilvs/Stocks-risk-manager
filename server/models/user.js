@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
     phone: String,
     stocks: [{type: mongoose.Schema.Types.ObjectId, ref: 'Stock'}],
     password: {type: String, required: true},
-    deposit: String
+    deposit: Number
 })
 
 module.exports = mongoose.model('User', userSchema)
