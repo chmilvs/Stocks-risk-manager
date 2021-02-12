@@ -17,11 +17,12 @@ function ButtonsForTimePeriods({tickerName, setLoading, setInfo, setFailureMssg,
                             refreshData(event, tickerName, setLoading, setFailureMssg, setInfo, setBtnShow)
                         }} type="button"
                                 style={{
-                                    marginRight: "5px",
+                                    borderRadius: "5px 0px 0px 5px",
                                     fontSize: "8pt",
-                                    backgroundColor: "#8884d8",
+                                    backgroundColor: "#45AD7E",
                                     paddingLeft: "5px",
-                                    paddingRight: "5px"
+                                    paddingRight: "5px",
+                                    width:"60px"
                                 }} name="15min"
                                 className="button primary smallButtons">15 мин
                         </button>
@@ -29,12 +30,13 @@ function ButtonsForTimePeriods({tickerName, setLoading, setInfo, setFailureMssg,
                             refreshData(event, tickerName, setLoading, setFailureMssg, setInfo, setBtnShow)
                         }} type="button"
                                 style={{
-                                    marginLeft: "5px",
-                                    marginRight: "5px",
+
+                                    borderRadius: "0px",
                                     fontSize: "8pt",
-                                    backgroundColor: "#8884d8",
+                                    backgroundColor: "#45AD7E",
                                     paddingLeft: "5px",
-                                    paddingRight: "5px"
+                                    paddingRight: "5px",
+                                    width:"60px"
                                 }} name="4hour"
                                 className="button primary smallButtons">4 часа
                         </button>
@@ -42,31 +44,33 @@ function ButtonsForTimePeriods({tickerName, setLoading, setInfo, setFailureMssg,
                             refreshData(event, tickerName, setLoading, setFailureMssg, setInfo, setBtnShow)
                         }} type="button"
                                 style={{
-                                    marginLeft: "5px",
+                                    borderRadius: "0px 5px 5px 0px",
                                     marginRight: "5px",
                                     fontSize: "8pt",
-                                    backgroundColor: "#8884d8",
+                                    backgroundColor: "#45AD7E",
                                     paddingLeft: "5px",
-                                    paddingRight: "5px"
+                                    paddingRight: "5px",
+                                    width:"60px"
                                 }} name="1day"
                                 className="button primary smallButtons">1 день
                         </button>
+
+                        <div style={{fontSize: "30px", fontWeight: "bold", marginLeft: "70px"}}>
+                            {actualPrice} USD
+                        </div>
                         <button onClick={() => {
                             refreshActualPrice(tickerName, setFailureMssg, setActualPrice, setBtnShow, setLoading)
                         }} type="button"
                                 style={{
-                                    marginLeft: "5px",
-                                    marginRight: "5px",
+                                    marginLeft:"10px",
                                     fontSize: "8pt",
-                                    backgroundColor: "#8884d8",
+                                    backgroundColor: "#45AD7E",
                                     paddingLeft: "5px",
-                                    paddingRight: "5px"
+                                    paddingRight: "5px",
+                                    width:"50px"
                                 }}
-                                className="button primary smallButtons">Обновить текущую цену
+                                className="button primary smallButtons"><i className="fas fa-sync"></i>
                         </button>
-                        <div style={{fontSize: "30px", fontWeight: "bold", marginLeft: "15px"}}>
-                            {actualPrice} USD
-                        </div>
                     </div>
                     }
                 </div>
