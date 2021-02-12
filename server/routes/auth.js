@@ -78,7 +78,7 @@ router
                             user: {username, email, phone, stocks, deposit},
                         });
                     } else if (user) res.json({success: false, message: 'Неверный пароль!'});
-                    else res.json({success: false, message: 'Такой пользователь отсутствует!'});
+                    else res.json({success: false, message: 'Такого пользователя нет в системе!'});
                 } catch (err) {
                     res.status(400).json({success: false, message: err.message});
                 }
