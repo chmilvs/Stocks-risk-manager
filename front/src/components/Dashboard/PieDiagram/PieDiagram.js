@@ -25,7 +25,7 @@ function PieDiagram({loading}) {
             <PieChart width={500} height={350}>
                 <Pie
                     data={result}
-                    cx={240}
+                    cx={300}
                     cy={150}
                     labelLine={false}
                     label={renderCustomizedLabel}

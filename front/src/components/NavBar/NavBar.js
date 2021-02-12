@@ -8,6 +8,7 @@ import './NavBar.css'
 
 
 function NavBar() {
+    const deposit = useSelector(state => state.auth.currentUser.deposit)
     const user = useSelector(state => state.auth)
     const dispatch = useDispatch()
     const history = useHistory()
@@ -29,11 +30,15 @@ function NavBar() {
             <nav>
                 <div className="nav-wrapper">
                     <a href="#!" className="brand-logo"><Link to="/">Toffee</Link></a>
+
                     <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i
                         className="material-icons">menu</i></a>
                     <ul className="right hide-on-med-and-down">
                                 {user.isLogged ? (
                                     <>
+                                        <li style={{fontSize: "1rem", fontWeight:"bolder", padding:"0px 15px"}}>
+                                            Мой портфель: {Number(deposit).toFixed(2)} USD
+                                        </li>
                                         <li>
                                             <Link to='/update'>Изменить профайл</Link>
                                         </li>
