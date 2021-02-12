@@ -3,17 +3,23 @@ import React from 'react';
 import {addStockAC} from "../../redux/actionCreators/stockAC";
 import {useDispatch, useSelector} from "react-redux";
 
-function InputStocks({setOpen, actualPrice, tickerName, valueToBuy, setText}) {
+function InputStocks({setOpen, setOpenFalse, actualPrice, tickerName, valueToBuy, setText}) {
     const dispatch = useDispatch()
     const deposit = useSelector(state => state.auth.currentUser.deposit)
     const handleSubmit = (event) => {
         event.preventDefault();
-        setOpen(true);
+
         const {
             inquiry: {value: inquiry},
         } = event.target;
         console.log(inquiry,inquiry*valueToBuy,deposit);
-        if ((Number(inquiry) * Number(valueToBuy) <= Number(deposit)) && (Number(inquiry) * Number(valueToBuy) > 0)) dispatch(addStockAC({inquiry, actualPrice, tickerName}))
+        if ((Number(inquiry) * Number(valueToBuy) <= Number(deposit)) && (Number(inquiry) * Number(valueToBuy) > 0)) {
+            dispatch(addStockAC({inquiry, actualPrice, tickerName}))
+            setOpen(true);
+        } else {
+            setOpenFalse(true)
+            setText('Что-то пошло по пизде!')
+        }
         // else setText(`Превышена сумма имеющихся средств`)
     }
     return (

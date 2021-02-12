@@ -26,12 +26,14 @@ router
                     if (err) {
                         res.status(400).json({success: false, message: "Auth token expired"});
                     } else {
+                        console.log(decoded)
                         const user = await User.findById(decoded._id);
                         const stock = await new Stock({
                             price:Number(price),
                             amountBuyed:Number(amountBuyed),
                             tickerName
                         })
+                        console.log(user)
                         user.deposit -=price*amountBuyed
                         user.stocks.push(stock)
                         await stock.save()
