@@ -23,7 +23,7 @@ function UpdateForm() {
   }
   return (
     <div style={{display:"flex", justifyContent:"center", marginBottom:"100px"}}>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} autoComplete={"off"}>
         <label>Введите новые данные:</label>
         <label>Логин:</label>
         <div className="col-6 col-12-xsmall">
