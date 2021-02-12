@@ -22,7 +22,7 @@ function LoginForm({setState}) {
                 <div className="col-6 col-12-xsmall">
                     <input type="text" name="username" placeholder="Логин"/>
                 </div>
-                <div className="errors">{error.text == 'Такой пользователь отсутствует!' ? error.text : <></>}</div>
+                <div className="errors">{error.text == 'Такого пользователя нет в системе!' ? error.text : <></>}</div>
                 <div className="col-6 col-12-xsmall">
                     <input
                         type="password"
