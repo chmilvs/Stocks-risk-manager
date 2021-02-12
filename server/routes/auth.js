@@ -120,7 +120,7 @@ router
             } else {
                 let user = await User.findOneAndUpdate({_id:decoded._id},{email,username,deposit,phone});
 
-                await user.save()
+                // await user.save()
                 user = await User.findById(decoded._id).populate('stocks')
                 let sortFunction = (a, b) => {
                     if(a.tickerName < b.tickerName) { return -1; }
