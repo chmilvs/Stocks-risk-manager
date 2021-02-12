@@ -28,8 +28,8 @@ router
                     } else {
                         const user = await User.findById(decoded._id);
                         const stock = await new Stock({
-                            price,
-                            amountBuyed,
+                            price:Number(price),
+                            amountBuyed:Number(amountBuyed),
                             tickerName
                         })
                         user.deposit -=price*amountBuyed
