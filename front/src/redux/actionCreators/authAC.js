@@ -3,7 +3,7 @@ import {LOG_IN_URL, PROFILE_URL, SIGN_UP_URL, UPDATE_PROFILE_URL} from "../utils
 import {clearErrorAC, errorsAC} from "./errorAC"
 
 
-const token = JSON.parse(localStorage.getItem('jwt'))
+let token = JSON.parse(localStorage.getItem('jwt'))
 
 export const signUpFetchAC = ({username, password, phone, email, deposit}) => (
     dispatch
@@ -72,6 +72,7 @@ export const getProfileAC = () => {
 export const updateOneFetchAC = ({username, password, phone, email, deposit}) => (
     dispatch
 ) => {
+  token = JSON.parse(localStorage.getItem('jwt'))
     fetch(UPDATE_PROFILE_URL, {
         method: "POST",
         headers: {

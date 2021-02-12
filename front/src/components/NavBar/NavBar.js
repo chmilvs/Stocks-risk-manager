@@ -30,7 +30,7 @@ function NavBar() {
             <nav>
                 <div className="nav-wrapper">
                     <img src={logo} style={{width:"50px", height:"50px", marginTop:"6px", marginRight:"10px"}}/>
-                    <a href="#!" style={{fontWeight:"bolder"}} className="brand-logo"><Link to="/">Toffee</Link></a>
+                    <Link to='/' style={{fontWeight:"bolder"}} className="brand-logo">Toffee</Link>
 
                     <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i
                         className="material-icons">menu</i></a>
