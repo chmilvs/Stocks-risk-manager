@@ -44,7 +44,7 @@ function Dashboard() {
     return (
         <div className="dashboard">
             <div className="table">
-                Мой <i className="fa fa-briefcase">: {Number(deposit).toFixed(2)} USD</i>
+
                 <Table loading={loading} expired={expired}/>
             </div>
             <div className="diagrams">
