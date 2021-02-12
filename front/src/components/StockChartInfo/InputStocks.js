@@ -16,9 +16,10 @@ function InputStocks({setOpen, setOpenFalse, actualPrice, tickerName, valueToBuy
         if ((Number(inquiry) * Number(valueToBuy) <= Number(deposit)) && (Number(inquiry) * Number(valueToBuy) > 0)) {
             dispatch(addStockAC({inquiry, actualPrice, tickerName}))
             setOpen(true);
+            setText('Акции добавлены в портфель!')
         } else {
             setOpenFalse(true)
-            setText('Что-то пошло по пизде!')
+            setText('Указано неверное количество акций')
         }
         // else setText(`Превышена сумма имеющихся средств`)
     }
