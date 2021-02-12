@@ -12,7 +12,7 @@ router
 
     .post("/register",
         body('username').notEmpty(),
-        body('email').notEmpty,
+        body('email').notEmpty(),
         body('password').isLength({min:3}),async (req, res) => {
             console.log(req.body)
         const errors = validationResult(req)

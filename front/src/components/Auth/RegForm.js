@@ -10,6 +10,7 @@ function RegForm({ setState }) {
   const isLogged = useSelector((state) => state.auth.isLogged);
   const error = useSelector(state => state.errors.isError)
   const errorText = useSelector(state => state.errors)
+  console.log(errorText);
   const usernameErrorText = useSelector(state => state.errors.text.includes("username_1"))
   const emailErrorText = useSelector(state => state.errors.text.includes("email_1"))
   

@@ -19,9 +19,10 @@ const server = http.createServer(app);
 
 
 
-wsServer.listen(wsPort,()=>{
-    console.log('WS server started on '+ wsPort)
-})
+// wsServer.listen(
+//   wsPort,()=>{
+//     console.log('WS server started on '+ wsPort)
+// })
 server.listen(port, () => console.log(`
 ***
 Listen to server${port}
