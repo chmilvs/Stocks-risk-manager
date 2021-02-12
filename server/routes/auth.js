@@ -141,7 +141,6 @@ router
 })
     .post('/credentials',async (req,res) => {
     const {username,email} = req.body
-        console.log(req.body)
         try {
             const user = await User.findOne({username}) || await User.findOne({email})
             if (user) res.json({success: false})

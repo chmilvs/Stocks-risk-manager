@@ -40,7 +40,7 @@ function NavBar() {
                                             Мой портфель: {Number(deposit).toFixed(2)} USD
                                         </li>
                                         <li>
-                                            <Link to='/update'>Изменить профайл</Link>
+                                            <Link to='/update'>Изменить данные профиля</Link>
                                         </li>
                                         <li>
                                             <Link to="/riskpage">
