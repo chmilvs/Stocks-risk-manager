@@ -96,7 +96,14 @@ body.landing #header {
 .brand-logo:hover{
   background-color:rgb(91, 126, 102);
 }
+.enter:hover {
+  background-color:rgb(91, 126, 102);
+}
 
 li:hover:not(:nth-child(1)){
   background-color:rgb(91, 126, 102);
+}
+
+.nav-wrapper{
+  margin: 0 15px 0 15px;
 }
