@@ -9,6 +9,7 @@ import {API_KEY, GET_COMPANY_NAMES} from "../../redux/utils/utils";
 function Dashboard() {
     const deposit = useSelector(state => state.auth.currentUser.deposit)
     const stocks = useSelector(state => state.auth.currentUser.stocks)
+
     const [loading, setLoading] = useState([])
     const expired = 'Apikey expired'
     useEffect(() => {
@@ -42,15 +43,22 @@ function Dashboard() {
     }, [stocks, loading]);
 
     return (
-        <div className="dashboard">
-            <div className="table">
-
-                <Table loading={loading} expired={expired}/>
-            </div>
-            <div className="diagrams">
-                <PieDiagram loading={loading}/>
-                { loading ? <BarDiagram loading={loading}/> : false }
-            </div>
+        <div>
+            {loading.length > 0 ? <div className="dashboard">
+                <div className="table">
+                    <Table loading={loading} expired={expired}/>
+                </div>
+                <div className="diagrams">
+                    <PieDiagram loading={loading}/>
+                    <BarDiagram loading={loading}/>
+                </div>
+                </div> : <div style={{
+                marginLeft: "auto",
+                marginRight: "auto",
+                width:"230px",
+                marginTop: "300px",
+                marginBottom:"200px"
+               }}>Ваш портфель пока пуст</div>}
         </div>
     );
 }
