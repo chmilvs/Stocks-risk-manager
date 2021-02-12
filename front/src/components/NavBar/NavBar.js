@@ -5,7 +5,7 @@ import {useEffect} from 'react'
 import M from 'materialize-css';
 import 'materialize-css/dist/css/materialize.min.css'
 import './NavBar.css'
-
+import logo from './logo.png'
 
 function NavBar() {
     const deposit = useSelector(state => state.auth.currentUser.deposit)
@@ -29,14 +29,15 @@ function NavBar() {
         <>
             <nav>
                 <div className="nav-wrapper">
-                    <a href="#!" className="brand-logo"><Link to="/">Toffee</Link></a>
+                    <img src={logo} style={{width:"50px", height:"50px", marginTop:"6px", marginRight:"10px"}}/>
+                    <a href="#!" style={{fontWeight:"bolder"}} className="brand-logo"><Link to="/">Toffee</Link></a>
 
                     <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i
                         className="material-icons">menu</i></a>
                     <ul className="right hide-on-med-and-down">
                                 {user.isLogged ? (
                                     <>
-                                        <li style={{fontSize: "1rem", fontWeight:"bolder", padding:"0px 15px"}}>
+                                        <li style={{fontSize: "1rem", fontWeight:"bold", padding:"0px 15px"}}>
                                             Мой портфель: {Number(deposit).toFixed(2)} USD
                                         </li>
                                         <li>
