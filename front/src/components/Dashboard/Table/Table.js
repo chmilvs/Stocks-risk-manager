@@ -36,7 +36,6 @@ function Table({loading, expired}) {
                 </tr>
                 </tfoot>
             </table>
-
         </div>
     );
 }

@@ -14,7 +14,7 @@ function CalculationField({loading, sumToSpend, info, actualPrice, tickerName}) 
   const [text, setText] = useState('Акции добавлены в портфель!')
   const handleClick = () => {
     setOpen(false)
-    history.push('/dashboard')
+    // history.push('/dashboard')
   }
   useEffect(() => {
     setValueToBuy(Math.floor(sumToSpend / actualPrice));

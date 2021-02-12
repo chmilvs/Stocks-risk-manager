@@ -1,4 +1,4 @@
-import {Bar, BarChart, CartesianGrid, Legend, Tooltip, XAxis, YAxis} from 'recharts'
+import {Bar, BarChart, Legend, Tooltip, XAxis, YAxis} from 'recharts'
 
 function BarDiagram({loading}) {
 
@@ -7,8 +7,6 @@ function BarDiagram({loading}) {
             el['Компания'] = el['companyName'];
             el['Текущая цена'] = el['actualPrice'];
         })
-
-    console.log(loading)
     return (
         <>
             <BarChart

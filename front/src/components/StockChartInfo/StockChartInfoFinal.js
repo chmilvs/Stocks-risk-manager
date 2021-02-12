@@ -7,7 +7,6 @@ function StockChartInfoFinal({loading, info, setInfo}) {
             el['Цена'] = el['close'];
         })
     }
-    console.log('HHHHHEEEEYYY', info)
     return (
         <div>
             {!loading && info && <AreaChart width={780} height={300} data={info}

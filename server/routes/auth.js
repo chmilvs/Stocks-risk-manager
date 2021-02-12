@@ -12,7 +12,7 @@ router
 
     .post("/register",
         body('username').notEmpty(),
-        body('email').notEmpty,
+        body('email').notEmpty(),
         body('password').isLength({min:3}),async (req, res) => {
             console.log(req.body)
         const errors = validationResult(req)
@@ -79,7 +79,7 @@ router
                             user: {username, email, phone, stocks, deposit},
                         });
                     } else if (user) res.json({success: false, message: 'Неверный пароль!'});
-                    else res.json({success: false, message: 'Такой пользователь отсутсвует!'});
+                    else res.json({success: false, message: 'Такой пользователь отсутствует!'});
                 } catch (err) {
                     res.status(400).json({success: false, message: err.message});
                 }

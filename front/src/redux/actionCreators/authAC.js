@@ -91,8 +91,6 @@ export const updateOneFetchAC = ({username, password, phone, email, deposit}) =>
         });
 };
 
-
-
 export const logOutAC = () => {
     localStorage.removeItem("jwt")
     return {
@@ -101,7 +99,6 @@ export const logOutAC = () => {
 
 }
 
-
 export const addUser = (payload) => {
     return {
         type: SAVE_NEWUSER,
@@ -109,8 +106,3 @@ export const addUser = (payload) => {
     }
 }
 
-// export const logout = () => {
-//   return {
-//     type: USER_LOGOUT
-//   }
-// }

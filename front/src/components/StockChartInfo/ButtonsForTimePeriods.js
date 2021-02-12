@@ -1,7 +1,7 @@
 import React, {useEffect, useState, memo} from 'react';
 import {fetchTickers, refreshActualPrice, refreshData} from '../../fetchFunctions/fetchFunction'
 
-function ButtonsForTimePeriods({tickerName, loading, setLoading, sumToSpend, info, setInfo, setFailureMssg, setActualPrice, actualPrice}) {
+function ButtonsForTimePeriods({tickerName, setLoading, setInfo, setFailureMssg, setActualPrice, actualPrice}) {
     const [btnShow, setBtnShow] = useState(false)
 
     useEffect(() => {

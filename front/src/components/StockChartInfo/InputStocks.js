@@ -12,8 +12,10 @@ function InputStocks({setOpen, actualPrice, tickerName, valueToBuy, setText}) {
         const {
             inquiry: {value: inquiry},
         } = event.target;
-        if (inquiry * valueToBuy <= deposit) dispatch(addStockAC({inquiry, actualPrice, tickerName}))
-        else setText(`Превышена сумма имеющихся средств`)
+        console.log(inquiry,inquiry*valueToBuy,deposit);
+        if (inquiry * valueToBuy <= deposit)
+         dispatch(addStockAC({inquiry, actualPrice, tickerName}))
+        // else setText(`Превышена сумма имеющихся средств`)
     }
     return (
         <div>

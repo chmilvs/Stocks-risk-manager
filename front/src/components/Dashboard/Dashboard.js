@@ -5,7 +5,6 @@ import Table from './Table/Table'
 import './Dashboard.css'
 import {useSelector} from 'react-redux';
 import {API_KEY, GET_COMPANY_NAMES} from "../../redux/utils/utils";
-import {logInFetchAC} from "../../redux/actionCreators/authAC";
 
 function Dashboard() {
     const deposit = useSelector(state => state.auth.currentUser.deposit)
@@ -13,7 +12,6 @@ function Dashboard() {
     const [loading, setLoading] = useState([])
     const expired = 'Apikey expired'
     useEffect(() => {
-        console.log('ХЕР')
         const textArr = stocks
             .map((el) => {
                 return el.tickerName;
@@ -36,7 +34,6 @@ function Dashboard() {
                         stocks.forEach(el => {
                             el.companyName = expired
                             el.actualPrice = expired
-                    console.log(el)
                         })
                     }
                     setLoading(stocks);
@@ -47,7 +44,7 @@ function Dashboard() {
     return (
         <div className="dashboard">
             <div className="table">
-                Мой <i class="fa fa-briefcase">: {Number(deposit).toFixed(2)} USD</i>
+                Мой <i className="fa fa-briefcase">: {Number(deposit).toFixed(2)} USD</i>
                 <Table loading={loading} expired={expired}/>
             </div>
             <div className="diagrams">

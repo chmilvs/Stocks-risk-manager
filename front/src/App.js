@@ -10,10 +10,6 @@ import {useEffect} from 'react';
 import {getProfileAC} from './redux/actionCreators/authAC';
 import {useDispatch} from 'react-redux';
 import PrivateRouter from './components/PrivateRouters/PrivateRouter'
-import ChatWindow from "./components/ChatWindow/ChatWindow";
-// import io from "socket.io-client";
-// const socket = io('http://localhost:8080/')
-
 
 function App() {
   const dispatch = useDispatch();
@@ -27,9 +23,6 @@ function App() {
       <Switch>
         <Route exact path="/">
           <MainPage/>
-        </Route>
-        <Route path="/chat/">
-          <ChatWindow/>
         </Route>
         <Route path="/auth">
           <Auth />
