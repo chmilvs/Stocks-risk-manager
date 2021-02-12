@@ -8,8 +8,8 @@ function UpdateForm() {
   const history = useHistory()
   const [open, setOpen] = useState(false)
   const data = useSelector(state => state.auth.currentUser)
-  let updDeposit = +data.deposit
-  updDeposit.toFixed(2)
+  let updDeposit = Number(data.deposit).toFixed(2)
+  // updDeposit.toFixed(2)
   const dispatch = useDispatch()
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -44,7 +44,7 @@ function UpdateForm() {
         </div>
         <label>Сумма депозита:</label>
         <div className="col-6 col-12-xsmall">
-          <input type="number" name="deposit" defaultValue={String(updDeposit)} />
+          <input type="number" name="deposit" step="any" defaultValue={updDeposit} />
         </div>
         <button className="button primary small">Обновить</button>
       </form>
