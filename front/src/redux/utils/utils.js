@@ -1,5 +1,5 @@
 
-const adress = '/api'
+const adress = 'http://localhost:4000'
 export const SIGN_UP_URL = `${adress}/api/auth/register`
 export const LOG_IN_URL = `${adress}/api/auth/login`
 export const UPDATE_PROFILE_URL = `${adress}/api/auth/update`

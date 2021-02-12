@@ -6,6 +6,7 @@ import './Auth.css'
 function LoginForm({setState}) {
     const isLogged = useSelector(state => state.auth.isLogged)
     const error = useSelector(state => state.errors)
+    console.log(error);
     const dispatch = useDispatch()
     const logIn = (event) => {
         event.preventDefault()

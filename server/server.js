@@ -3,17 +3,17 @@ const http = require('http');
 const app = require('./app');
 
 const port = process.env.PORT || 4000;
-const wsPort = process.env.PORT || 8080
+// const wsPort = process.env.PORT || 8080
 
 const server = http.createServer(app);
-const wsServer = http.createServer()
+// const wsServer = http.createServer()
 
-const io = require('socket.io')(wsServer, {
-    serveClient: false,
-    pingInterval: 10000,
-    pingTimeout: 5000,
-    cookie: false
-});
+// const io = require('socket.io')(wsServer, {
+//     serveClient: false,
+//     pingInterval: 10000,
+//     pingTimeout: 5000,
+//     cookie: false
+// });
 
 
 

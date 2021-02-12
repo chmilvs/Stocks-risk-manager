@@ -5,6 +5,7 @@ import { errorsAC } from "./errorAC"
 const token = JSON.parse(localStorage.getItem('jwt'))
 
 export const addStockAC = ({ actualPrice, tickerName, inquiry }) => (dispatch) => {
+  console.log(actualPrice, tickerName, inquiry);
   fetch(ADD_STOCK_URL, {
     method: "POST",
     headers: {
