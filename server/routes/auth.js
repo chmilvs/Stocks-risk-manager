@@ -12,8 +12,9 @@ router
 
     .post("/register",
         body('username').notEmpty(),
-        body('email').isEmail(),
-        body('password').isLength({min:5}),async (req, res) => {
+        body('email').notEmpty,
+        body('password').isLength({min:3}),async (req, res) => {
+            console.log(req.body)
         const errors = validationResult(req)
             if(!errors.isEmpty()){
             return res.status(400).json({success:false,message:errors.array()})
@@ -110,6 +111,7 @@ router
         }
     })
 
+
 .post('/update',async(req,res)=>{
     let {email,username,deposit,phone,token} = req.body;
     try {
@@ -136,6 +138,22 @@ router
     } catch (err) {
         res.status(400).json({success: false, message: err.message.toString()});
     }
+
 })
+    .post('/credentials',async (req,res) => {
+    const {username,email} = req.body
+        console.log(req.body)
+        try {
+            const user = await User.findOne({username}) || await User.findOne({email})
+            if (user) res.json({success: false})
+            else {
+                res.json({success: true})
+            }
+        }
+        catch (err){
+        res.json({success:false,message:err.message})
+        }
+})
+
 
 module.exports = router
