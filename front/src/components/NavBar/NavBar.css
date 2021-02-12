@@ -97,6 +97,6 @@ body.landing #header {
   background-color:rgb(91, 126, 102);
 }
 
-li:hover{
+li:hover:not(:nth-child(1)){
   background-color:rgb(91, 126, 102);
 }

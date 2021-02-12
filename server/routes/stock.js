@@ -14,7 +14,6 @@ router
         body('amountBuyed').exists(),
         body('tickerName').exists(),
         async (req, res) => {
-          console.log(req.body);
             const errors = validationResult(req)
             if (!errors) {
                 return res.status(400).json({success: false, message: errors.array()})
