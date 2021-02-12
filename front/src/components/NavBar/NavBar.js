@@ -43,24 +43,24 @@ function NavBar() {
                                             <Link to='/update'>Изменить профайл</Link>
                                         </li>
                                         <li>
-                                            <Link to="/riskpage" className="">
+                                            <Link to="/riskpage">
                                                 Расчет риска
                                             </Link>
                                         </li>
                                         <li>
-                                            <Link to="/dashboard"  className="">
+                                            <Link to="/dashboard">
                                                 Профиль
                                             </Link>
                                         </li>
                                         <li>
-                                            <Link to={"/"} onClick={logOut} className="">
+                                            <Link to={"/"} onClick={logOut}>
                                                 Выйти
                                             </Link>
                                         </li>
                                     </>
                                 ) : (
                                     <li>
-                                        <Link to="/auth" className="">
+                                        <Link to="/auth" className="enter">
                                             Войти
                                         </Link>
                                     </li>
