@@ -13,3 +13,11 @@ input::-webkit-inner-spin-button {
 input[type=number] {
     -moz-appearance: textfield;
 }
+
+.chart-buttons {
+    marginRight: "5px";
+    fontSize: "8pt";
+    backgroundColor: "#45AD7E";
+    paddingLeft: "5px";
+    paddingRight: "5px";
+}
