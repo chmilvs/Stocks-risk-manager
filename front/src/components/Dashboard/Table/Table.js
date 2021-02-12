@@ -29,12 +29,7 @@ function Table({loading, expired}) {
                 </tr>
                             )}
                 </tbody>
-                <tfoot>
-                <tr>
-                    <td colSpan="7"></td>
-                    <td>100.00</td>
-                </tr>
-                </tfoot>
+
             </table>
         </div>
     );
