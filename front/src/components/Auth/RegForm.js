@@ -4,6 +4,7 @@ import {signUpFetchAC} from '../../redux/actionCreators/authAC'
 import {Redirect} from 'react-router-dom'
 import Cleave from 'cleave.js/react'
 import './Auth.css'
+import { clearErrorAC } from '../../redux/actionCreators/errorAC'
 
 function RegForm({ setState }) {
   const dispatch = useDispatch();
@@ -20,6 +21,10 @@ function RegForm({ setState }) {
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [deposit, setDeposit] = useState("");
+  const errorHandle = () => {
+    setInputDeposit(false)
+    dispatch(clearErrorAC())
+  }
 
   const signUp = (event) => {
     event.preventDefault();
@@ -122,7 +127,7 @@ function RegForm({ setState }) {
             )}
 
             <a id="reg-button"
-              onClick={() => setInputDeposit(false)}
+              onClick={errorHandle}
               className="button primary small"
             >
               Зарегистрироваться
