@@ -19,7 +19,7 @@ function StockChartInfoFinal({loading, info, setInfo}) {
                 </defs>
                 <XAxis dataKey="date" hide={true}/>
                 <YAxis type="number" domain={['auto', 'auto']} />
-                <Brush dataKey="date" height={30} stroke="#8884d8"/>
+                <Brush y={270} dataKey="date" height={30} stroke="#8884d8"/>
                 <Area type="monotone" dataKey="Цена" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)"/>
                 {info && info.length > 0  ? <Tooltip  formatter={(label) => label.toFixed(2) + " USD"}/> : null}
             </AreaChart>}
