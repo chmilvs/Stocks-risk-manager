@@ -7,4 +7,4 @@ export const PROFILE_URL = `${adress}/api/auth`
 export const GET_ALL_STOCKS = 'https://financialmodelingprep.com/api/v3/stock/list'
 export const ADD_STOCK_URL = `${adress}/api/stock`
 export const GET_COMPANY_NAMES = 'https://financialmodelingprep.com/api/v3/quote/'
-export const API_KEY = '?apikey=3013358465f12be91f11f2c28a4cfd71'
+export const API_KEY = '?apikey=ec17cf42b20e533904666651c8f5af41'

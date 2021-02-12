@@ -14,7 +14,6 @@ router
         body('username').notEmpty(),
         body('email').notEmpty(),
         body('password').isLength({min:3}),async (req, res) => {
-            console.log(req.body)
         const errors = validationResult(req)
             if(!errors.isEmpty()){
             return res.status(400).json({success:false,message:errors.array()})
