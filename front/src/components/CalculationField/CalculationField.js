@@ -15,7 +15,8 @@ function CalculationField({loading, sumToSpend, info, actualPrice, tickerName}) 
     setOpen(false)
     history.push('/dashboard')
   }
-  const handleClickFalse = () => {
+  const handleClickFalse = (event) => {
+    event.stopPropagation()
     setOpenFalse(false)
   }
   useEffect(() => {
