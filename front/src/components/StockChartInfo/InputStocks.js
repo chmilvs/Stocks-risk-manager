@@ -17,10 +17,8 @@ function InputStocks({setOpen, setOpenFalse, actualPrice, tickerName, valueToBuy
             dispatch(addStockAC({inquiry, actualPrice, tickerName}))
             setOpen(true);
             setText('Акции добавлены в портфель!')
-            setOpenFalse(false)
         } else {
             setOpenFalse(true)
-            setOpen(false);
             setText('Указано неверное количество акций')
         }
         // else setText(`Превышена сумма имеющихся средств`)
