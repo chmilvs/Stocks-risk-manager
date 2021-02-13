@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt')
 const User = require('../models/user')
 const saltRounds = 12;
 const { body, validationResult } = require('express-validator');
-const privateKey = '1q2w3e4r5t6y7u8i9o0p-[=]'
+const privateKey = process.env.SECRET_KEY
 
 
 router
