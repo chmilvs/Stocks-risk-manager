@@ -9,11 +9,14 @@
 
 <h2 style='color:green'>Стек технологий</h2>
 <ul>
-  <li>элемент маркированного списка</li>
-  <li>React JS
-  <li>Redux, Redux-Thunk
-  <li>MongoDB
-  <li>Express
+  <li>React JS</li>
+  <li>Redux, Redux-Thunk</li>
+  <li>MongoDB</li>
+  <li>Express</li>
+  <li>Recharts - React charting library</li>
+  <li>Financial Modeling Prep API</li>
+  <li>Amazon Web Services</li>
+  <li>Nginx/li>
 </ul>
 
 Watch at: http://3.129.89.208
