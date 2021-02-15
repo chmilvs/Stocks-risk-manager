@@ -37,23 +37,23 @@ function NavBar() {
                     <ul className="right hide-on-med-and-down">
                                 {user.isLogged ? (
                                     <>
-                                        <li style={{fontSize: "1rem", fontWeight:"bold", padding:"0px 15px"}}>
+                                        <li style={{fontSize: "30px", padding:"0px 15px"}}>
                                             Мой портфель: {Number(deposit).toFixed(2)} USD
                                         </li>
-                                        <li>
+                                        <li style={{fontSize: "30px", padding:"0px 15px"}}>
                                             <Link to='/update'>Изменить данные профиля</Link>
                                         </li>
-                                        <li>
+                                        <li style={{fontSize: "30px", padding:"0px 15px"}}>
                                             <Link to="/riskpage">
                                                 Расчет риска
                                             </Link>
                                         </li>
-                                        <li>
+                                        <li style={{fontSize: "30px", padding:"0px 15px"}}>
                                             <Link to="/dashboard">
                                                 Профиль
                                             </Link>
                                         </li>
-                                        <li>
+                                        <li style={{fontSize: "30px", padding:"0px 15px"}}>
                                             <Link to={"/"} onClick={logOut}>
                                                 Выйти
                                             </Link>

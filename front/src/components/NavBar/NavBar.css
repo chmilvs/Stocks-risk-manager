@@ -107,3 +107,7 @@ li:hover:not(:nth-child(1)){
 .nav-wrapper{
   margin: 0 15px 0 15px;
 }
+
+.nav ul a {
+    font-size: 4rem;
+}
